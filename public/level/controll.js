@@ -601,6 +601,117 @@ document.addEventListener("keydown", function (e) {
                 BirthZombie("bot", false, "Test", undefined, ZName[Math.floor(Math.random() * ZName.length)], 0);
                 break;
             }
+            case "KeyL": {
+                handleEventLive("GIFT",{
+                    giftId: 5655,
+                    groupId: '1671703122630',
+                    repeatCount: 133,
+                    userId: '1097075974' + Math.random(),
+                    secUid: 'MS4wLjABAAAAZh1QYbL055uZ8Ur8buWq9bQnCRv7JcyuCSgNFFx7ON0CvSnLa7Gw6JQ1hVIjwG3T',
+                    uniqueId: 'lions1ngh',
+                    nickname: 'Randeep Deol',
+                    profilePictureUrl: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/68f702aec5e8a399d149819ce17da628.webp?x-expires=1676448000&x-signature=B8cmBkYoosRVkUVW6RND1PgjJaM%3D',
+                    followRole: 0,
+                    userDetails: {
+                        createTime: '0',
+                        bioDescription: '',
+                        profilePictureUrls: [
+                            'https://p16-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/8fe9b9ee7f0ff6626895dd9a84a87468~tplv-tiktok-shrink:72:72.webp?x-expires=1671872400&x-signature=g2q3iNRK2DprY5J1JkQEC1O61pc%3D',
+                            'https://p16-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/8fe9b9ee7f0ff6626895dd9a84a87468~c5_100x100.webp?x-expires=1671872400&x-signature=IW7SJvFB98DDUVVn%2Fg1vf8uRm1k%3D',
+                            'https://p19-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/8fe9b9ee7f0ff6626895dd9a84a87468~c5_100x100.webp?x-expires=1671872400&x-signature=KoENiVTV1VEvcFqjGY7MMVdm%2BtE%3D',
+                            'https://p16-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/8fe9b9ee7f0ff6626895dd9a84a87468~c5_100x100.jpeg?x-expires=1671872400&x-signature=%2F%2FchLTCfKNa3bcpzYviGNhVegFA%3D'
+                        ]
+                    },
+                    followInfo: {
+                        followingCount: 6555,
+                        followerCount: 3456,
+                        followStatus: 0,
+                        pushStatus: 0
+                    },
+                    isModerator: false,
+                    isNewGifter: false,
+                    isSubscriber: false,
+                    createTime: '1671703147173',
+                    msgId: '7179907833360861995'+Math.random(),
+                    displayType: 'webcast_aweme_gift_send_message',
+                    label: '{0:user} sent {1:gift} {2:string}',
+                    repeatEnd: false,
+                    gift: { gift_id: 5655, repeat_count: 133, repeat_end: 0, gift_type: 1 },
+                    giftName: 'Rose',
+                    giftType: 1,
+                    diamondCount: 3,
+                    describe: 'Sent Rose',
+                    giftPictureUrl: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/eba3a9bb85c33e017f3648eaf88d7189~tplv-obj.png',
+                    timestamp: 1671703147173,
+                    receiverUserId: '6828379625065989122',
+                    extendedGiftInfo: {
+                        action_type: 0,
+                        app_id: 0,
+                        business_text: '',
+                        can_put_in_gift_box: false,
+                        combo: true,
+                        deprecated10: false,
+                        deprecated11: false,
+                        deprecated12: 0,
+                        deprecated14: '',
+                        deprecated2: false,
+                        deprecated3: false,
+                        deprecated4: 0,
+                        deprecated6: 0,
+                        deprecated7: 0,
+                        deprecated8: 0,
+                        deprecated9: false,
+                        describe: 'sent Rose',
+                        diamond_count: 1,
+                        duration: 1000,
+                        event_name: 'livesdk_gift_click',
+                        for_custom: false,
+                        for_linkmic: true,
+                        gift_rank_recommend_info: '',
+                        gift_scene: 1,
+                        gold_effect: '',
+                        gray_scheme_url: '',
+                        guide_url: '',
+                        icon: {
+                            avg_color: '#DCF4FA',
+                            height: 0,
+                            image_type: 0,
+                            is_animated: false,
+                            open_web_url: '',
+                            uri: 'webcast-va/eba3a9bb85c33e017f3648eaf88d7189',
+                            width: 0
+                        },
+                        id: 5655,
+                        image: {
+                            avg_color: '#EBCEE1',
+                            height: 0,
+                            image_type: 0,
+                            is_animated: false,
+                            open_web_url: '',
+                            uri: 'webcast-va/eba3a9bb85c33e017f3648eaf88d7189',
+                            width: 0
+                        },
+                        is_box_gift: false,
+                        is_broadcast_gift: false,
+                        is_displayed_on_panel: true,
+                        is_effect_befview: false,
+                        is_gray: false,
+                        is_random_gift: false,
+                        item_type: 1,
+                        lock_info: { gift_level: 0, lock: false, lock_type: 0 },
+                        manual: '',
+                        name: 'Rose',
+                        notify: false,
+                        primary_effect_id: 0,
+                        region: '',
+                        scheme_url: '',
+                        special_effects: {},
+                        tracker_params: {},
+                        type: 1
+                    }
+                })
+                break;
+            }
         }
     }
 

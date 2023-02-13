@@ -37,7 +37,7 @@ function connect() {
     if (uniqueId !== '') {
 
         // $('#stateText').text('Connecting...');
-        connection.connect("jk.asmrtistt", {
+        connection.connect("takigamestream", {
             enableExtendedGiftInfo: true
         }).then(state => {
             console.log("Connected: " + state)
@@ -97,6 +97,7 @@ async function handleEventLive(typeEvent, data) {
         idComment = data.msgId;
 
         if (typeEvent === ENUM_TYPE_ACTION.GIFT) {
+            console.log(data.diamondCount)
             if (Number.isInteger(data.diamondCount) && data.diamondCount > 0) {
                 for (let i = 0; i < data.diamondCount; i++) {
                     await delay(1000);
@@ -207,7 +208,7 @@ connection.on('like', (data) => {
 // New gift received
 connection.on('gift', (data) => {
     if (data.gift.repeat_end == 0) {
-        handleEventLive(ENUM_TYPE_ACTION.SHARE_FOLLOW, data);
+        handleEventLive(ENUM_TYPE_ACTION.GIFT, data);
     }
 })
 
