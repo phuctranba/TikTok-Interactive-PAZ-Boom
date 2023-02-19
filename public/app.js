@@ -37,7 +37,7 @@ function connect() {
     if (uniqueId !== '') {
 
         // $('#stateText').text('Connecting...');
-        connection.connect("takigamestream", {
+        connection.connect("interactive.game.live", {
             enableExtendedGiftInfo: true
         }).then(state => {
             console.log("Connected: " + state)
@@ -65,7 +65,7 @@ function connect() {
     }
 }
 
-connect();
+// connect();
 
 // Prevent Cross site scripting (XSS)
 function sanitize(text) {
@@ -100,8 +100,8 @@ async function handleEventLive(typeEvent, data) {
             console.log(data.diamondCount)
             if (Number.isInteger(data.diamondCount) && data.diamondCount > 0) {
                 for (let i = 0; i < data.diamondCount; i++) {
-                    await delay(1000);
-                    BirthZombie(data.userId + "", true, data.nickname || "", data.profilePictureUrl, ZombieName[Math.floor(Math.random() * ZombieName.length)], data.diamondCount);
+                    await delay(500);
+                    BirthZombie(data.userId + "", true, data.nickname || "", data.profilePictureUrl, ZombieNameGift[Math.floor(Math.random() * ZombieNameGift.length)], data.diamondCount);
                 }
             }
         } else {
@@ -113,7 +113,7 @@ async function handleEventLive(typeEvent, data) {
                     if (indexUserInBannedArr > -1) {
                         bannedUserSpam.splice(indexUserInBannedArr, 1);
                     }
-                }, 15000)
+                }, 5000)
             }
         }
     }

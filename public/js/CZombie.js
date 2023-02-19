@@ -985,8 +985,8 @@ var CZombies = function (b, a) {
         StandGif: 11,
         width: 154,
         height: 160,
-        OSpeed: 1,
-        Speed: 1,
+        OSpeed: 1.75,
+        Speed: 1.75,
         beAttackedPointL: 40,
         beAttackedPointR: 134,
         PicArr: (function () {
@@ -1004,8 +1004,8 @@ var CZombies = function (b, a) {
         HP: 500,
         width: 348,
         height: 218,
-        OSpeed: 1,
-        Speed: 1,
+        OSpeed: 1.75,
+        Speed: 1.75,
         beAttackedPointL: 215,
         beAttackedPointR: 260,
         StandGif: 13,
@@ -1226,6 +1226,8 @@ var CZombies = function (b, a) {
         SunNum: 100,
         StandGif: 13,
         width: 166,
+        OSpeed: 1.75,
+        Speed: 1.75,
         height: 144,
         beAttackedPointL: 60,
         beAttackedPointR: 116,
@@ -1515,8 +1517,8 @@ var CZombies = function (b, a) {
         height: 200,
         beAttackedPointL: 40,
         beAttackedPointR: 100,
-        OSpeed: 1,
-        Speed: 1,
+        OSpeed: 1.75,
+        Speed: 1.75,
         Altitude: 1,
         BoomDieGif: 11,
         Produce: '潜水僵尸可以在水下前行。<p>韧性：<font color="#FF0000">低</font><br>特点：<font color="#FF0000">潜泳以避免遭到攻击<br>只在水池关卡出现</font></p>僵尸不呼吸。他们不需要空气。那么为什么潜水僵尸需要一套潜水装置来潜水呢？<br>答案：同行的压力。',
@@ -1594,7 +1596,8 @@ var CZombies = function (b, a) {
         }
     });
 
-let ZombieName = [oZombie, oFlagZombie, oNewspaperZombie, oConeheadZombie, oPoleVaultingZombie, oBackupDancer, oBucketheadZombie, oDuckyTubeZombie1, oDuckyTubeZombie2, oDuckyTubeZombie3, oFootballZombie, oScreenDoorZombie, oSnorkelZombie]
+let ZombieName = [oZombie, oFlagZombie, oNewspaperZombie, oConeheadZombie, oBackupDancer, oBucketheadZombie, oDuckyTubeZombie1, oDuckyTubeZombie2, oDuckyTubeZombie3]
+let ZombieNameGift = [oPoleVaultingZombie, oFootballZombie, oScreenDoorZombie, oSnorkelZombie]
 let ZNamePackage = {
     package1: [oZombie, oFlagZombie],
     package5: [oConeheadZombie, oPoleVaultingZombie, oBucketheadZombie],

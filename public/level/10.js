@@ -1,5 +1,5 @@
 oS.Init({
-    PName: [oCherryBomb, oCherryBomb, oCherryBomb, oCherryBomb, oCherryBomb, oCherryBomb, oCherryBomb, oCherryBomb, oCherryBomb, oCherryBomb, oJalapeno, oJalapeno, oJalapeno, oJalapeno, oJalapeno, oIceShroom, oIceShroom, oDoomShroom],
+    PName: [oCherryBomb,oCherryBomb,oCherryBomb,oCherryBomb,oCherryBomb,oCherryBomb,oCherryBomb,oCherryBomb,oCherryBomb,oCherryBomb,oCherryBomb, oCherryBomb, oCherryBomb, oCherryBomb, oDoomShroom, oCherryBomb, oCherryBomb, oCherryBomb, oCherryBomb, oCherryBomb, oCherryBomb, oJalapeno, oIceShroom, oJalapeno, oJalapeno, oJalapeno,oJalapeno, oJalapeno, oJalapeno, oJalapeno],
     ZName: [oZombie, oFlagZombie, oNewspaperZombie, oConeheadZombie, oPoleVaultingZombie, oBackupDancer, oBucketheadZombie, oDuckyTubeZombie1, oDuckyTubeZombie2, oDuckyTubeZombie3, oFootballZombie, oScreenDoorZombie, oSnorkelZombie],
     PicArr: ["images/interface/background1.jpg", "images/interface/trophy.png"],
     backgroundImage: "images/interface/background1.jpg",
@@ -8,7 +8,7 @@ oS.Init({
     LargeWaveFlag: {10: $("imgFlag3"), 20: $("imgFlag1")},
     StaticCard: 0,
     maxOfAreaToRandom: 45,
-    maxOfIndexPlantToRandom: 17,
+    maxOfIndexPlantToRandom: 30,
     LoadMusic: function () {
         NewEle("oEmbed", "embed", "width:0;height:0", {src: "music/Look up at the.mp3"}, EDAll)
     },
@@ -35,20 +35,26 @@ oS.Init({
 
         // NewEle("oEmbed", "embed", "width:0;height:0", {src: sound}, EDAll);
         let sndBg = new Audio(sound);
-        sndBg.volume = 0.3;
+        sndBg.volume = 0.4;
         sndBg.loop = true;
         sndBg.play();
 
         timeoutAutoBornZombie = setTimeout(() => {
             let randomFakeUser = fakeUser[Math.floor(Math.random() * fakeUser.length)];
-            let randomFakeZombie = ZName[Math.floor(Math.random() * ZName.length)];
-            BirthZombie(randomFakeUser.userId, randomFakeZombie.prototype.Lvl !== 1, randomFakeUser.name, randomFakeUser.avatar, randomFakeZombie, randomFakeZombie.prototype.Lvl === 1 ? 1 : 5);
+            let randomFakeZombie = ZombieName[Math.floor(Math.random() * ZombieName.length)];
+            BirthZombie(randomFakeUser.userId, false, randomFakeUser.name, randomFakeUser.avatar, randomFakeZombie, 0);
         }, CONFIG.MAX_TIME_AUTO_BORN_ZOMBIE)
 
 
         setInterval(() => {
             BirthPlant();
         }, 1200)
+
+        setInterval(()=>{
+            let sndGuide = new Audio("music/guide.wav");
+            sndGuide.volume = 1;
+            sndGuide.play();
+        },60000)
 
         PrepareGrowPlants(function () {
             oP.Monitor({

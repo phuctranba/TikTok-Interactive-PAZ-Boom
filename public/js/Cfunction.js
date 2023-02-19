@@ -1,8 +1,8 @@
 ﻿const CONFIG = {
-    SPEED: 7,
+    SPEED: 6,
     DELAY_ROW_INDEX_LOGIC: 4000,
-    MAX_TIME_AUTO_BORN_ZOMBIE: 5000,
-    MIN_TIME_AUTO_BORN_ZOMBIE: 2000,
+    MAX_TIME_AUTO_BORN_ZOMBIE: 15000,
+    MIN_TIME_AUTO_BORN_ZOMBIE: 10000,
     TIME_HIDE_HONORS: 3000,
 }
 
@@ -1247,27 +1247,33 @@ const ShowFinalWave = function () {
 const ZombieWin = function (e, name, score, userId, avatar) {
     if (userId != "bot") {
         let textCongrats;
-        switch (Math.floor(Math.random() * 7)) {
+        switch (Math.floor(Math.random() * 9)) {
             case 0:
-                textCongrats = "The current zombie king is " + name;
+                textCongrats = "Vua zombies mới là " + name;
                 break;
             case 1:
-                textCongrats = "Welcome " + name + " to the throne";
+                textCongrats = "Chào mừng " + name + " đến ngai vàng";
                 break;
             case 2:
-                textCongrats = "Unstoppable " + name;
+                textCongrats = "Không thể ngăn cản " + name;
                 break;
             case 3:
-                textCongrats = "Wow, " + name + " overcame them all";
+                textCongrats = "Vãi, " + name + " đã vượt qua tất cả";
                 break;
             case 4:
-                textCongrats = name + " has become a legend";
+                textCongrats = name + " đã trở thành huyền thoại";
                 break;
             case 5:
-                textCongrats = name + " beat the host";
+                textCongrats = name + " đã đánh bại chủ nhà";
+                break;
+            case 6:
+                textCongrats = "Không ai đủ tuổi để cản "+ name;
+                break;
+            case 7:
+                textCongrats = "Thắng rồi "+ name+" ơi";
                 break;
             default:
-                textCongrats = "congrats " + name + " for becoming the king of zombies";
+                textCongrats = "Chúc mừng " + name + " đã trở thành vua của zombie";
                 break;
         }
 
@@ -1318,8 +1324,8 @@ const BirthZombie = function (userId, isVip, name, avatar, zombie, score, numOfL
 
     timeoutAutoBornZombie = setTimeout(() => {
         let randomFakeUser = fakeUser[Math.floor(Math.random() * fakeUser.length)];
-        let randomFakeZombie = ZName[Math.floor(Math.random() * ZName.length)];
-        BirthZombie(randomFakeUser.userId, randomFakeZombie.prototype.Lvl !== 1, randomFakeUser.name, randomFakeUser.avatar, randomFakeZombie, randomFakeZombie.prototype.Lvl === 1 ? 1 : 5);
+        let randomFakeZombie = ZombieName[Math.floor(Math.random() * ZombieName.length)];
+        BirthZombie(randomFakeUser.userId, false, randomFakeUser.name, randomFakeUser.avatar, randomFakeZombie, 0);
     }, timeToBornZombie)
 
     let zombieArr = []
@@ -1858,14 +1864,18 @@ const TextToSpeech = async function (text) {
         input: {
             text: text
         },
+        // voice: {
+        //     languageCode: "en-US",
+        //     name: "en-US-Wavenet-G"
+        // },
         voice: {
-            languageCode: "en-US",
-            name: "en-US-Wavenet-G"
+            languageCode: "vi-VN",
+            name: "vi-VN-Wavenet-C"
         },
         audioConfig: {
             audioEncoding: "MP3",
-            pitch: 0,
-            speakingRate: 0.8
+            pitch: -20,
+            speakingRate: 1
         }
     });
 
@@ -1879,7 +1889,7 @@ const TextToSpeech = async function (text) {
     fetch("https://texttospeech.googleapis.com/v1beta1/text:synthesize", requestOptions)
         .then(async (response) => {
             var sndTada = new Audio("music/tada.mp3");
-            sndTada.volume = 1;
+            sndTada.volume = 0.7;
             sndTada.play()
                 .then(async () => {
                     await new Promise(resolve => setTimeout(resolve, 1000));
