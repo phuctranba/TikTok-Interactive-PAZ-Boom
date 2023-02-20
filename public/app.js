@@ -132,7 +132,7 @@ async function handleEventLive(typeEvent, data) {
                 BirthZombie(data.userId + "", true, data.nickname || "", data.profilePictureUrl, ZombieNameGift[Math.floor(Math.random() * ZombieNameGift.length)], data.diamondCount);
             }
         }
-        TextToSpeech(data?.nickname + " đã tặng quà để mua zombie vip")
+        TextToSpeech(data?.nickname + " đã tặng quà để mua zombie vip", true)
     } else {
         if (!bannedUserSpam.includes(data.userId)) {
             BirthZombie(data.userId + "", false, data.nickname || "", data.profilePictureUrl, ZombieName[Math.floor(Math.random() * ZombieName.length)], 1);

@@ -1855,7 +1855,7 @@ const ImgSpriter = function (h, c, e, f, g) {
     }, [d]))
 };
 
-const TextToSpeech = async function (text) {
+const TextToSpeech = async function (text, isTada) {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("X-Goog-Api-Key", "AIzaSyD8_SfTd1wq_cCa0LdwkINxbjaqNxH9vRM");
@@ -1888,17 +1888,26 @@ const TextToSpeech = async function (text) {
 
     fetch("https://texttospeech.googleapis.com/v1beta1/text:synthesize", requestOptions)
         .then(async (response) => {
-            var sndTada = new Audio("music/tada.mp3");
-            sndTada.volume = 0.7;
-            sndTada.play()
-                .then(async () => {
-                    await new Promise(resolve => setTimeout(resolve, 1000));
-                    let data = await response.json();
-                    let audioBase64 = data.audioContent;
-                    var snd = new Audio("data:audio/wav;base64," + audioBase64);
-                    snd.volume = 1;
-                    snd.play();
-                });
+            if(isTada){
+                var sndTada = new Audio("music/tada.mp3");
+                sndTada.volume = 0.5;
+                sndTada.play()
+                    .then(async () => {
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        let data = await response.json();
+                        let audioBase64 = data.audioContent;
+                        var snd = new Audio("data:audio/wav;base64," + audioBase64);
+                        snd.volume = 1;
+                        snd.play();
+                    });
+            }else {
+                let data = await response.json();
+                let audioBase64 = data.audioContent;
+                var snd = new Audio("data:audio/wav;base64," + audioBase64);
+                snd.volume = 1;
+                snd.play();
+            }
+
         })
         .catch(error => console.log('error', error));
 }
