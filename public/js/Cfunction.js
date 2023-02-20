@@ -1874,7 +1874,7 @@ const TextToSpeech = async function (text, isTada) {
         },
         audioConfig: {
             audioEncoding: "MP3",
-            pitch: -20,
+            pitch: 0,
             speakingRate: 1
         }
     });
@@ -1890,7 +1890,7 @@ const TextToSpeech = async function (text, isTada) {
         .then(async (response) => {
             if(isTada){
                 var sndTada = new Audio("music/tada.mp3");
-                sndTada.volume = 0.5;
+                sndTada.volume = 0.7;
                 sndTada.play()
                     .then(async () => {
                         await new Promise(resolve => setTimeout(resolve, 1000));
