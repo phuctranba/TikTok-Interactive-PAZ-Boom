@@ -29,6 +29,7 @@ const ENUM_TYPE_ACTION = {
     SHARE_FOLLOW: "SHARE_FOLLOW",
     LIKE: "LIKE",
     GIFT: "GIFT",
+    JOIN: "JOIN",
     COMMENT: "COMMENT",
 }
 
@@ -65,7 +66,7 @@ function connect() {
     }
 }
 
-// connect();
+connect();
 
 // Prevent Cross site scripting (XSS)
 function sanitize(text) {
@@ -92,7 +93,7 @@ function delay(time) {
 }
 
 async function handleEventLive(typeEvent, data) {
-    if ([ENUM_TYPE_ACTION.SHARE_FOLLOW, ENUM_TYPE_ACTION.GIFT, ENUM_TYPE_ACTION.LIKE].includes(typeEvent)) {
+    // if ([ENUM_TYPE_ACTION.SHARE_FOLLOW, ENUM_TYPE_ACTION.GIFT, ENUM_TYPE_ACTION.LIKE, ENUM_TYPE_ACTION.JOIN].includes(typeEvent)) {
         if (idComment === data.msgId) return;
         idComment = data.msgId;
 
@@ -116,7 +117,7 @@ async function handleEventLive(typeEvent, data) {
                 }, 5000)
             }
         }
-    }
+    // }
 
 }
 
@@ -183,20 +184,22 @@ connection.on('like', (data) => {
 
 // Member join
 // let joinMsgDelay = 0;
-// connection.on('member', (msg) => {
-//     if (window.settings.showJoins === "0") return;
-//
-//     let addDelay = 250;
-//     if (joinMsgDelay > 500) addDelay = 100;
-//     if (joinMsgDelay > 1000) addDelay = 0;
-//
-//     joinMsgDelay += addDelay;
-//
-//     setTimeout(() => {
-//         joinMsgDelay -= addDelay;
-//         handleEventLive('#21b2c2', msg, 'joined', true);
-//     }, joinMsgDelay);
-// })
+connection.on('member', (data) => {
+    // if (window.settings.showJoins === "0") return;
+
+    // let addDelay = 250;
+    // if (joinMsgDelay > 500) addDelay = 100;
+    // if (joinMsgDelay > 1000) addDelay = 0;
+    //
+    // joinMsgDelay += addDelay;
+    //
+    // setTimeout(() => {
+    //     joinMsgDelay -= addDelay;
+    //     handleEventLive('#21b2c2', msg, 'joined', true);
+    // }, joinMsgDelay);
+
+    handleEventLive(ENUM_TYPE_ACTION.JOIN, data);
+})
 
 // New chat comment received
 // connection.on('chat', (msg) => {

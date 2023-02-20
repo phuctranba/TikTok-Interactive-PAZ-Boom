@@ -54,7 +54,7 @@ oS.Init({
             let sndGuide = new Audio("music/guide.wav");
             sndGuide.volume = 1;
             sndGuide.play();
-        },60000)
+        },30000)
 
         PrepareGrowPlants(function () {
             oP.Monitor({

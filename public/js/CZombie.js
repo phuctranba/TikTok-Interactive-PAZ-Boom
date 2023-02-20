@@ -141,12 +141,12 @@ var CZombies = function (b, a) {
                     '"><img src="' + ShadowPNG + '" style="' + i.getShadow(i) + '"><img style="position:absolute;clip:rect(0,auto,',
                     ',0);top:',
                     'px" src="' + i.PicArr[i.NormalGif] + '"><img src="',
-                    i.getShadow(i, 15) + ';width: 50px;height: 50px;border: 2px solid #fff;border-radius: 30px; transform: rotateY(180deg);"><img src="images/vip.png" style="'+i.getShadow(i, 15, -44)+';width: 50px;height: 50px;transform: rotateY(180deg);',
+                    i.getShadow(i, 15) + ';width: 50px;height: 50px;border-radius: 30px; transform: rotateY(180deg);"><img src="images/vip.png" style="'+i.getShadow(i, 15, -44)+';width: 50px;height: 50px;transform: rotateY(180deg);',
                     '"></div>']            },
             getHTML: function (k, f, e, j, h, c, d, avatar, isVip) {
                 var g = this.ArHTML;
                 // return g[0] + k + g[1] + h + g[2] + f + g[3] + e + g[4] + j + g[5] + name + g[6] + c + g[7] + d + g[8]
-                return g[0] + k + g[1] + h + g[2] + f + g[3] + e + g[4] + j + g[5] + c + g[6] + d + g[7] + (avatar ? avatar + "\" style=\"" : "\" style=\"visibility: hidden;") + g[8] + (isVip?"visibility: visible;":"visibility: hidden;") + g[9]
+                return g[0] + k + g[1] + h + g[2] + f + g[3] + e + g[4] + j + g[5] + c + g[6] + d + g[7] + (avatar ? (avatar.includes("botzombie")?avatar + "\" style=\"border: 2px solid #fff;":avatar + "\" style=\"border: 2px solid #000;") : "\" style=\"visibility: hidden;") + g[8] + (isVip?"visibility: visible;":"visibility: hidden;") + g[9]
             },
             getVisible: "visible",
             prepareBirth: function (delayTime, userId, isVip, name = "", avatar = undefined, score, numOfLane) {
