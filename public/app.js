@@ -94,29 +94,57 @@ function delay(time) {
 
 async function handleEventLive(typeEvent, data) {
     // if ([ENUM_TYPE_ACTION.SHARE_FOLLOW, ENUM_TYPE_ACTION.GIFT, ENUM_TYPE_ACTION.LIKE, ENUM_TYPE_ACTION.JOIN].includes(typeEvent)) {
-        if (idComment === data.msgId) return;
-        idComment = data.msgId;
+    if (idComment === data.msgId) return;
+    idComment = data.msgId;
 
-        if (typeEvent === ENUM_TYPE_ACTION.GIFT) {
-            console.log(data.diamondCount)
-            if (Number.isInteger(data.diamondCount) && data.diamondCount > 0) {
-                for (let i = 0; i < data.diamondCount; i++) {
-                    await delay(500);
-                    BirthZombie(data.userId + "", true, data.nickname || "", data.profilePictureUrl, ZombieNameGift[Math.floor(Math.random() * ZombieNameGift.length)], data.diamondCount);
-                }
+    if (typeEvent === ENUM_TYPE_ACTION.JOIN) {
+        let random = Math.floor(Math.random() * 10)
+        if (random === 2) {
+            let textHello;
+            switch (Math.floor(Math.random() * 6)) {
+                case 0:
+                    textHello = "Tim để chơi " + data?.nickname + " ơi";
+                    break;
+                case 1:
+                    textHello = "Chào mừng " + data?.nickname + " đến chơi";
+                    break;
+                case 2:
+                    textHello = "Chơi game không " + data?.nickname;
+                    break;
+                case 3:
+                    textHello = "Tim mạnh lên mọi người";
+                    break;
+                case 4:
+                    textHello = "Chơi game đi " + data?.nickname;
+                    break;
+                default:
+                    textHello = "Ở lại chơi " + data?.nickname + " nhé";
+                    break;
             }
-        } else {
-            if (!bannedUserSpam.includes(data.userId)) {
-                BirthZombie(data.userId + "", false, data.nickname || "", data.profilePictureUrl, ZombieName[Math.floor(Math.random() * ZombieName.length)], 1);
-                bannedUserSpam.push(data.userId);
-                setTimeout(() => {
-                    let indexUserInBannedArr = bannedUserSpam.indexOf(data.userId);
-                    if (indexUserInBannedArr > -1) {
-                        bannedUserSpam.splice(indexUserInBannedArr, 1);
-                    }
-                }, 5000)
+            TextToSpeech(textHello)
+        }
+    }
+
+    if (typeEvent === ENUM_TYPE_ACTION.GIFT) {
+        if (Number.isInteger(data.diamondCount) && data.diamondCount > 0) {
+            for (let i = 0; i < data.diamondCount; i++) {
+                await delay(500);
+                BirthZombie(data.userId + "", true, data.nickname || "", data.profilePictureUrl, ZombieNameGift[Math.floor(Math.random() * ZombieNameGift.length)], data.diamondCount);
             }
         }
+        TextToSpeech(data?.nickname + " đã tặng quà để mua zombie vip")
+    } else {
+        if (!bannedUserSpam.includes(data.userId)) {
+            BirthZombie(data.userId + "", false, data.nickname || "", data.profilePictureUrl, ZombieName[Math.floor(Math.random() * ZombieName.length)], 1);
+            bannedUserSpam.push(data.userId);
+            setTimeout(() => {
+                let indexUserInBannedArr = bannedUserSpam.indexOf(data.userId);
+                if (indexUserInBannedArr > -1) {
+                    bannedUserSpam.splice(indexUserInBannedArr, 1);
+                }
+            }, 5000)
+        }
+    }
     // }
 
 }

@@ -35,7 +35,7 @@ oS.Init({
 
         // NewEle("oEmbed", "embed", "width:0;height:0", {src: sound}, EDAll);
         let sndBg = new Audio(sound);
-        sndBg.volume = 0.4;
+        sndBg.volume = 0.6;
         sndBg.loop = true;
         sndBg.play();
 
