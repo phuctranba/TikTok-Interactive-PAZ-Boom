@@ -34,9 +34,7 @@ const ENUM_TYPE_ACTION = {
 }
 
 function connect() {
-    console.log("akjsdbasb")
     let uniqueId = window.settings.username || $('#uniqueIdInput').val();
-    console.log(uniqueId,"akjsdbasb")
     if (uniqueId !== '') {
 
         // $('#stateText').text('Connecting...');
