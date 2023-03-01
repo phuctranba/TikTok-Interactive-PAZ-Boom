@@ -8,7 +8,7 @@ oS.Init({
     LF: [0, 0, 1, 1, 1, 0],
     ZF: [0, 1, 1, 1, 1, 1],
     LevelName: "Zombie",
-    LargeWaveFlag: {10: $("imgFlag3"), 20: $("imgFlag2"), 30: $("imgFlag1")},
+    LargeWaveFlag: {10: $Cfun("imgFlag3"), 20: $Cfun("imgFlag2"), 30: $Cfun("imgFlag1")},
     LoadMusic: function () {
         NewEle("oEmbed", "embed", "width:0;height:0", {src: "music/Look up at the.mp3"}, EDAll)
     }

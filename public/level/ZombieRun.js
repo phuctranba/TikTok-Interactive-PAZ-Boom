@@ -8,14 +8,14 @@ oS.Init({
     LvlClearFunc: function () {
         oSym.TimeStep = 10
     },
-    LargeWaveFlag: {10: $("imgFlag3"), 20: $("imgFlag1")},
+    LargeWaveFlag: {10: $Cfun("imgFlag3"), 20: $Cfun("imgFlag1")},
     LoadMusic: function () {
         NewEle("oEmbed", "embed", "width:0;height:0", {src: "music/Look up at the.mp3"}, EDAll)
     },
     StartGame: function () {
-        ClearChild($("oEmbed"));
+        ClearChild($Cfun("oEmbed"));
         NewEle("oEmbed", "embed", "width:0;height:0", {src: "music/Watery Graves.mp3"}, EDAll);
-        SetVisible($("tdShovel"), $("dFlagMeter"));
+        SetVisible($Cfun("tdShovel"), $Cfun("dFlagMeter"));
         oS.InitLawnMower();
         PrepareGrowPlants(function () {
             oP.Monitor({
@@ -27,7 +27,7 @@ oS.Init({
             AutoProduceSun(25);
             oSym.addTask(1500, function () {
                 oP.AddZombiesFlag();
-                SetVisible($("dFlagMeterContent"))
+                SetVisible($Cfun("dFlagMeterContent"))
             }, [])
         })
     }

@@ -14,16 +14,16 @@ let idComment = undefined;
 
 let bannedUserSpam = []
 
-// $(document).ready(() => {
-//     $('#connectButton').click(connect);
-//     $('#uniqueIdInput').on('keyup', function (e) {
-//         if (e.key === 'Enter') {
-//             connect();
-//         }
-//     });
-//
-//     if (window.settings.username) connect();
-// })
+$(document).ready(() => {
+    $('#connectButton').click(connect);
+    $('#uniqueIdInput').on('keyup', function (e) {
+        if (e.key === 'Enter') {
+            connect();
+        }
+    });
+
+    if (window.settings.username) connect();
+})
 
 const ENUM_TYPE_ACTION = {
     SHARE_FOLLOW: "SHARE_FOLLOW",
@@ -34,11 +34,13 @@ const ENUM_TYPE_ACTION = {
 }
 
 function connect() {
+    console.log("akjsdbasb")
     let uniqueId = window.settings.username || $('#uniqueIdInput').val();
+    console.log(uniqueId,"akjsdbasb")
     if (uniqueId !== '') {
 
         // $('#stateText').text('Connecting...');
-        connection.connect("interactive.game.live", {
+        connection.connect(uniqueId, {
             enableExtendedGiftInfo: true
         }).then(state => {
             console.log("Connected: " + state)
@@ -49,6 +51,7 @@ function connect() {
             likeCount = 0;
             diamondsCount = 0;
             updateRoomStats();
+            SelectModal(10)
         }).catch(errorMessage => {
             console.log(errorMessage, "errorMessage")
             $('#stateText').text(errorMessage);
@@ -65,8 +68,6 @@ function connect() {
         alert('no username entered');
     }
 }
-
-connect();
 
 // Prevent Cross site scripting (XSS)
 function sanitize(text) {
@@ -142,7 +143,7 @@ async function handleEventLive(typeEvent, data) {
                 if (indexUserInBannedArr > -1) {
                     bannedUserSpam.splice(indexUserInBannedArr, 1);
                 }
-            }, 5000)
+            }, 10000)
         }
     }
     // }

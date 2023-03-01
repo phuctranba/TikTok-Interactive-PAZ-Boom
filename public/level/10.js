@@ -5,7 +5,7 @@ oS.Init({
     backgroundImage: "images/interface/background1.jpg",
     CanSelectCard: 0,
     LevelName: "Bài 1-10",
-    LargeWaveFlag: {10: $("imgFlag3"), 20: $("imgFlag1")},
+    LargeWaveFlag: {10: $Cfun("imgFlag3"), 20: $Cfun("imgFlag1")},
     StaticCard: 0,
     maxOfAreaToRandom: 45,
     maxOfIndexPlantToRandom: 30,
@@ -13,7 +13,7 @@ oS.Init({
         NewEle("oEmbed", "embed", "width:0;height:0", {src: "music/Look up at the.mp3"}, EDAll)
     },
     StartGame: function () {
-        ClearChild($("oEmbed"));
+        ClearChild($Cfun("oEmbed"));
         let sound;
         switch (Math.floor(Math.random() * 5)) {
             case 0:
@@ -38,6 +38,8 @@ oS.Init({
         sndBg.volume = 0.4;
         sndBg.loop = true;
         sndBg.play();
+
+        ClearChild($Cfun("formInput"))
 
         timeoutAutoBornZombie = setTimeout(() => {
             let randomFakeUser = fakeUser[Math.floor(Math.random() * fakeUser.length)];
@@ -124,29 +126,29 @@ oS.Init({
             opacity: 0.4,
             zIndex: 30
         }, EDAll);
-        SetAlpha($(f.DID), 50, 0.5);
-        SetNone($("dTitle"))
+        SetAlpha($Cfun(f.DID), 50, 0.5);
+        SetNone($Cfun("dTitle"))
     }, CancelPlant: function () {
-        ClearChild($("MovePlant"), $("MovePlantAlpha"));
+        ClearChild($Cfun("MovePlant"), $Cfun("MovePlantAlpha"));
         oS.Chose = 0;
-        SetAlpha($(ArCard[oS.ChoseCard].DID), 100, 1);
+        SetAlpha($Cfun(ArCard[oS.ChoseCard].DID), 100, 1);
         oS.ChoseCard = ""
     }, GrowPlant: function (k, c, b, f, a) {
         var i = oS.ChoseCard, g = ArCard[i], h = g.PName, j = h.prototype, d = g.DID, e;
         j.CanGrow(k, f, a) ? function () {
             // console.log(c,"-", b,"-", f,"-", a,"-", k)
             (new h).Birth(c, b, f, a, k);
-            SetStyle($("imgGrowSoil"), {left: c - 30 + "px", top: b - 40 + "px", zIndex: 3 * f, display: "block"});
-            oSym.addTask(20, SetNone, [$("imgGrowSoil")]);
-            ClearChild($("MovePlant"), $("MovePlantAlpha"));
-            $("dCardList").removeChild(e = $(d));
+            SetStyle($Cfun("imgGrowSoil"), {left: c - 30 + "px", top: b - 40 + "px", zIndex: 3 * f, display: "block"});
+            oSym.addTask(20, SetNone, [$Cfun("imgGrowSoil")]);
+            ClearChild($Cfun("MovePlant"), $Cfun("MovePlantAlpha"));
+            $Cfun("dCardList").removeChild(e = $Cfun(d));
             e = null;
             ArCard.splice(i, 1);
             oS.ChoseCard = "";
             oS.Chose = 0
         }() : CancelPlant()
     }, ViewPlantTitle: function (a) {
-        var c = $("dTitle"), b = ArCard[a].PName.prototype;
+        var c = $Cfun("dTitle"), b = ArCard[a].PName.prototype;
         c.innerHTML = b.CName + "<br>" + b.Tooltip;
         SetStyle(c, {top: 60 * a + "px", left: "100px"})
     }

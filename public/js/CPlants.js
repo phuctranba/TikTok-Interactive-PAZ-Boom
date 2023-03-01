@@ -107,7 +107,7 @@ const CPlants = NewO({
         b.HP = 0;
         delete $P[c];
         delete oGd.$[b.R + "_" + b.C + "_" + b.PKind];
-        !a && ClearChild($(c));
+        !a && ClearChild($Cfun(c));
         b.PrivateDie(b)
     }
 });
@@ -137,7 +137,7 @@ const oLawnCleaner = InheritO(CPlants, {
                 g[f].Die(2)
             }
             b > c ? j.Die() : (j.pixelRight += 10, j.AttackedLX = b += 10, j.AttackedRX = d += 10, e.style.left = (j.pixelLeft += 10) + "px", oSym.addTask(1, arguments.callee, [j, c, b, d, h, e]))
-        })(a, oS.W, a.AttackedLX, a.AttackedRX, a.R, $(a.id))
+        })(a, oS.W, a.AttackedLX, a.AttackedRX, a.R, $Cfun(a.id))
 
     }
 });
@@ -159,7 +159,7 @@ const oBrains = InheritO(CPlants, {
         a.PrivateDie = oS.BrainsNum ? (a.DieStep = Math.floor(150 / oS.BrainsNum), function (d) {
             var c, b;
             try {
-                (b = --oS.BrainsNum) ? (c = b * d.DieStep, $("imgFlagHead").style.left = (c - 11) + "px", $("imgFlagMeterFull").style.clip = "rect(0,157px,21px," + c + "px)") : ($("imgFlagHead").style.left = "-1px", $("imgFlagMeterFull").style.clip = "rect(0,157px,21px,0)", oP.FlagToEnd())
+                (b = --oS.BrainsNum) ? (c = b * d.DieStep, $Cfun("imgFlagHead").style.left = (c - 11) + "px", $Cfun("imgFlagMeterFull").style.clip = "rect(0,157px,21px," + c + "px)") : ($Cfun("imgFlagHead").style.left = "-1px", $Cfun("imgFlagMeterFull").style.clip = "rect(0,157px,21px,0)", oP.FlagToEnd())
 
             } catch (err) {
                 console.log(err)
@@ -198,7 +198,7 @@ const oPeashooter = InheritO(CPlants, {
         EditEle(b.BulletEle.cloneNode(false), {id: c}, 0, EDAll);
         oGd.$B.push(a);
         oSym.addTask(15, function (e) {
-            var d = $(e);
+            var d = $Cfun(e);
             d && SetBlock(d)
         }, [c])
 
@@ -233,7 +233,7 @@ const oRepeater = InheritO(oPeashooter, {
         EditEle(c.BulletEle.cloneNode(false), {id: d}, 0, EDAll);
         oGd.$B.push(a);
         oSym.addTask(15, function (h) {
-            var g = $(h);
+            var g = $Cfun(h);
             g && SetBlock(g)
         }, [d]);
         f ? ++f : f = 1;
@@ -277,7 +277,7 @@ const oThreepeater = InheritO(oPeashooter, {
         while (a--) {
             b = new d[a];
             oSym.addTask(15, function (h) {
-                var g = $(h);
+                var g = $Cfun(h);
                 g && SetBlock(g)
             }, [f = b.id = "PB" + Math.random()]);
             EditEle(c[a].cloneNode(false), {id: f}, 0, EDAll);
@@ -314,7 +314,7 @@ const oGatlingPea = InheritO(oPeashooter, {
         EditEle(c.BulletEle.cloneNode(false), {id: d}, 0, EDAll);
         oGd.$B.push(a);
         oSym.addTask(15, function (h) {
-            var g = $(h);
+            var g = $Cfun(h);
             g && SetBlock(g)
         }, [d]);
         f ? ++f : f = 1;
@@ -399,7 +399,7 @@ const oSplitPea = InheritO(oPeashooter, {
         oGd.$B.push(b);
         EditEle(c.BulletEle[d].cloneNode(false), {id: e}, 0, EDAll);
         oSym.addTask(15, function (h) {
-            var g = $(h);
+            var g = $Cfun(h);
             g && SetBlock(g)
         }, [e]);
         d && !f && oSym.addTask(15, function (g) {
@@ -498,7 +498,7 @@ const oPumpkinHead = InheritO(CPlants, {
     HurtStatus: 0,
     getHurt: function (e, c, b) {
 
-        var d = this, f = d.id, a = $(f);
+        var d = this, f = d.id, a = $Cfun(f);
         switch (true) {
             case c && c < 3:
                 d.Die(1);
@@ -516,7 +516,7 @@ const oPumpkinHead = InheritO(CPlants, {
                 break;
             case d.HP < 2667:
                 try {
-                    d.HurtStatus < 1 && (d.HurtStatus = 1, a.childNodes[1].src = "images/Plants/PumpkinHead/pumpkin_damage1.gif", $(f + "_2").src = "images/Plants/PumpkinHead/Pumpkin_back.gif")
+                    d.HurtStatus < 1 && (d.HurtStatus = 1, a.childNodes[1].src = "images/Plants/PumpkinHead/pumpkin_damage1.gif", $Cfun(f + "_2").src = "images/Plants/PumpkinHead/Pumpkin_back.gif")
 
                 } catch (err) {
                     console.log(err)
@@ -533,7 +533,7 @@ const oPumpkinHead = InheritO(CPlants, {
     },
     PrivateDie: function (a) {
 
-        ClearChild($(a.id + "_2"))
+        ClearChild($Cfun(a.id + "_2"))
 
     }
 });
@@ -606,7 +606,7 @@ const oPotatoMine = InheritO(CPlants, {
         oSym.addTask(1500, function (c) {
             var b = $P[c];
             try {
-                b && ($(c).childNodes[1].src = "images/Plants/PotatoMine/PotatoMine.gif", b.Status = 1, b.canTrigger = 1, b.getHurt = function (g, e, d) {
+                b && ($Cfun(c).childNodes[1].src = "images/Plants/PotatoMine/PotatoMine.gif", b.Status = 1, b.canTrigger = 1, b.getHurt = function (g, e, d) {
                     var f = this;
                     e > 2 ? (f.HP -= d) < 1 && f.Die() : f.NormalAttack(f.pixelLeft, f.pixelLeft + f.width, f.R)
                 })
@@ -626,7 +626,7 @@ const oPotatoMine = InheritO(CPlants, {
     },
     NormalAttack: function (k, j, f) {
 
-        var h = this, b = h.id, d = $(b), c = oZ.getArZ(k, j, f), g = c.length, a, l = h.pixelLeft, e = h.pixelTop;
+        var h = this, b = h.id, d = $Cfun(b), c = oZ.getArZ(k, j, f), g = c.length, a, l = h.pixelLeft, e = h.pixelTop;
         while (g--) {
             (a = c[g]).Altitude < 2 && a.getHurt(0, 0, 1800, 0, 0, 0, 2)
         }
@@ -694,7 +694,7 @@ const oWallNut = InheritO(CPlants, {
     HurtStatus: 0,
     getHurt: function (e, b, a) {
         try {
-            var c = this, d = $(c.id).childNodes[1];
+            var c = this, d = $Cfun(c.id).childNodes[1];
             !(b % 3) ? (c.HP -= a) < 1 ? c.Die() : c.HP < 1334 ? c.HurtStatus < 2 && (c.HurtStatus = 2, d.src = "images/Plants/WallNut/Wallnut_cracked2.gif") : c.HP < 2667 && c.HurtStatus < 1 && (c.HurtStatus = 1, d.src = "images/Plants/WallNut/Wallnut_cracked1.gif") : c.Die(1)
         } catch (err) {
             console.log(err)
@@ -721,7 +721,7 @@ const oTallNut = InheritO(oWallNut, {
     Stature: 1,
     getHurt: function (e, b, a) {
         try {
-            var c = this, d = $(c.id).childNodes[1];
+            var c = this, d = $Cfun(c.id).childNodes[1];
             !(b % 3) ? (c.HP -= a) < 1 ? c.Die() : c.HP < 2667 ? c.HurtStatus < 2 && (c.HurtStatus = 2, d.src = "images/Plants/TallNut/TallnutCracked2.gif") : c.HP < 5333 && c.HurtStatus < 1 && (c.HurtStatus = 1, d.src = "images/Plants/TallNut/TallnutCracked1.gif") : c.Die(1)
 
         } catch (err) {
@@ -752,7 +752,7 @@ const oCherryBomb = InheritO(CPlants, {
         oSym.addTask(63, function (b) {
             var c = $P[b];
             if (c) {
-                var f = $(b), j = c.R, g = j > 2 ? j - 1 : 1, e = j < oS.R ? j + 1 : oS.R, l = c.pixelLeft - 80,
+                var f = $Cfun(b), j = c.R, g = j > 2 ? j - 1 : 1, e = j < oS.R ? j + 1 : oS.R, l = c.pixelLeft - 80,
                     k = c.pixelLeft + 160, d, h;
                 do {
                     h = (d = oZ.getArZ(l, k, g)).length;
@@ -794,7 +794,7 @@ const oJalapeno = InheritO(oCherryBomb, {
         oSym.addTask(72, function (g) {
             var f = $P[g];
             if (f) {
-                var b = $(g), e = f.R, c = oZ.getArZ(100, oS.W, e), d = c.length;
+                var b = $Cfun(g), e = f.R, c = oZ.getArZ(100, oS.W, e), d = c.length;
                 while (d--) {
                     c[d].getHurt(0, 0, 1800, 0, 0, 0, 1)
                 }
@@ -917,7 +917,7 @@ const oGarlic = InheritO(CPlants, {
     HurtStatus: 0,
     getHurt: function (e, b, a) {
         try {
-            var c = this, d = $(c.id).childNodes[1];
+            var c = this, d = $Cfun(c.id).childNodes[1];
             !(b % 3) ? (c.HP -= 20) < 1 ? c.Die() : (e.ChangeR({R: c.R}), c.HP < 134 ? c.HurtStatus < 2 && (c.HurtStatus = 2, d.src = "images/Plants/Garlic/Garlic_body3.gif") : c.HP < 267 && c.HurtStatus < 1 && (c.HurtStatus = 1, d.src = "images/Plants/Garlic/Garlic_body2.gif")) : c.Die(1)
 
         } catch (err) {
@@ -951,7 +951,7 @@ const oSquash = InheritO(CPlants, {
     },
     TriggerCheck: function (h, g, e) {
 
-        var c = h.ZX, b = this.id, a = $(b).childNodes[1], f = h.isAttacking;
+        var c = h.ZX, b = this.id, a = $Cfun(b).childNodes[1], f = h.isAttacking;
         h.beAttacked && h.Altitude > -1 && h.Altitude < 2 && (f || !f && c - this.AttackedRX < 71) && (oT.$[this.R].splice(e, 1), a.src = c > this.AttackedRX ? "images/Plants/Squash/SquashR.png" : "images/Plants/Squash/SquashL.png", oSym.addTask(100, function (d, j, i) {
             var k = $P[d];
             k && k.NormalAttack(k, h.id, i)
@@ -960,7 +960,7 @@ const oSquash = InheritO(CPlants, {
     },
     NormalAttack: function (d, c, b) {
 
-        var a = $(d.id), e = $Z[c];
+        var a = $Cfun(d.id), e = $Z[c];
         e && (b = e.ZX + e.Speed * 4 * (!e.WalkDirection ? -1 : 1) - 50);
         try {
             a.childNodes[1].src = "images/Plants/Squash/SquashAttack.gif" + $Random + Math.random();
@@ -1009,7 +1009,7 @@ const oChomper = InheritO(CPlants, {
     },
     NormalAttack: function (a, b) {
         try {
-            $(a).childNodes[1].src = "images/Plants/Chomper/ChomperAttack.gif" + $Random + Math.random();
+            $Cfun(a).childNodes[1].src = "images/Plants/Chomper/ChomperAttack.gif" + $Random + Math.random();
         } catch (err) {
             console.log(err)
         }
@@ -1019,9 +1019,9 @@ const oChomper = InheritO(CPlants, {
             $P[c] && ((e = $Z[d]) && e.beAttacked ? oSym.addTask(18, function (f) {
                 var g = $P[f];
                 try {
-                    g && ($(f).childNodes[1].src = e.getRaven(f) ? (oSym.addTask(4200, function (h) {
+                    g && ($Cfun(f).childNodes[1].src = e.getRaven(f) ? (oSym.addTask(4200, function (h) {
                         var i = $P[h];
-                        i && (i.canTrigger = 1, $(h).childNodes[1].src = "images/Plants/Chomper/Chomper.gif")
+                        i && (i.canTrigger = 1, $Cfun(h).childNodes[1].src = "images/Plants/Chomper/Chomper.gif")
                     }, [f]), "images/Plants/Chomper/ChomperDigest.gif") : (g.canTrigger = 1, "images/Plants/Chomper/Chomper.gif"))
                 } catch (err) {
                     console.log(err)
@@ -1030,7 +1030,7 @@ const oChomper = InheritO(CPlants, {
             }, [c]) : oSym.addTask(18, function (f) {
                 var g = $P[f];
                 try {
-                    g && (g.canTrigger = 1, $(f).childNodes[1].src = "images/Plants/Chomper/Chomper.gif")
+                    g && (g.canTrigger = 1, $Cfun(f).childNodes[1].src = "images/Plants/Chomper/Chomper.gif")
                 } catch (err) {
                     console.log(err)
                 }
@@ -1069,7 +1069,7 @@ const oFumeShroom = InheritO(CPlants, {
     },
     PrivateDie: function (a) {
 
-        ClearChild($(a.id + "_Bullet"))
+        ClearChild($Cfun(a.id + "_Bullet"))
 
     },
     getTriggerRange: function (a, b, c) {
@@ -1078,7 +1078,7 @@ const oFumeShroom = InheritO(CPlants, {
     NormalAttack: function () {
 
         var f = this, d = oZ.getArZ(f.AttackedLX, Math.min(f.AttackedRX + 330, 900), f.R), e = d.length, g, c = f.id,
-            b = $(c), a = c + "_Bullet";
+            b = $Cfun(c), a = c + "_Bullet";
         while (e--) {
             (g = d[e]).Altitude < 2 && g.getHurt(0, 0, 20, 0, 0, 0, 0)
         }
@@ -1088,16 +1088,16 @@ const oFumeShroom = InheritO(CPlants, {
             console.log(err)
         }
 
-        SetBlock($(a));
+        SetBlock($Cfun(a));
         ImgSpriter(a, c, [["0 0", 90, 1], ["0 -62px", 90, 2], ["0 -124px", 90, 3], ["0 -186px", 90, 4], ["0 -248px", 90, 5], ["0 -310px", 90, 6], ["0 -372px", 90, 7], ["0 -434px", 90, -1]], 0, function (i, j) {
-            var h = $(j);
+            var h = $Cfun(j);
             try {
                 $P[j] && (h.childNodes[1].src = "images/Plants/FumeShroom/FumeShroom.gif");
             } catch (err) {
                 console.log(err)
             }
 
-            SetNone($(i))
+            SetNone($Cfun(i))
         })
 
     }
@@ -1137,7 +1137,7 @@ const oCoffeeBean = InheritO(CPlants, {
         oSym.addTask(240, function (c) {
             var d = oGd.$[c], b;
             try {
-                d && (b = d.WakeUP, (!b ? ($(d.id).childNodes[1].src = d.PicArr[d.NormalGif], d.canTrigger = 1, d.Sleep = 0) : b(d)));
+                d && (b = d.WakeUP, (!b ? ($Cfun(d.id).childNodes[1].src = d.PicArr[d.NormalGif], d.canTrigger = 1, d.Sleep = 0) : b(d)));
 
             } catch (err) {
                 console.log(err)
@@ -1175,7 +1175,7 @@ const oGloomShroom = InheritO(oFumeShroom, {
     },
     PrivateDie: function (a) {
 
-        ClearChild($(a.id + "_Bullet"))
+        ClearChild($Cfun(a.id + "_Bullet"))
 
     },
     getTriggerRange: function (c, d, e) {
@@ -1188,7 +1188,7 @@ const oGloomShroom = InheritO(oFumeShroom, {
     },
     NormalAttack: function () {
 
-        var k = this, g, f = k.MaxR, c = k.MinX, b = k.MaxX, e, h, a, j = k.id, d = $(j), l = j + "_Bullet";
+        var k = this, g, f = k.MaxR, c = k.MinX, b = k.MaxX, e, h, a, j = k.id, d = $Cfun(j), l = j + "_Bullet";
         for (g = k.MinR; g <= f; g++) {
             e = oZ.getArZ(c, b, g);
             for (h = e.length; h--; (a = e[h]).Altitude < 2 && a.getHurt(0, 0, 80, 0, 0, 0, 0)) {
@@ -1200,16 +1200,16 @@ const oGloomShroom = InheritO(oFumeShroom, {
             console.log(err)
         }
 
-        SetBlock($(l));
+        SetBlock($Cfun(l));
         ImgSpriter(l, j, [["0 0", 90, 1], ["0 -200px", 90, 2], ["0 -400px", 90, 3], ["0 -600px", 90, 4], ["0 -800px", 90, 5], ["0 -1000px", 90, 6], ["0 -1200px", 90, 7], ["0 -1400px", 90, 8], ["0 -1600px", 90, 9], ["0 -1800px", 90, 10], ["0 -2000px", 90, 11], ["0 -2200px", 90, -1]], 0, function (m, n) {
-            var i = $(n);
+            var i = $Cfun(n);
             try {
                 $P[n] && (i.childNodes[1].src = "images/Plants/GloomShroom/GloomShroom.gif");
             } catch (err) {
                 console.log(err)
             }
 
-            SetNone($(m))
+            SetNone($Cfun(m))
         })
 
     }
@@ -1246,7 +1246,7 @@ const oPuffShroom = InheritO(oFumeShroom, {
         EditEle(b.BulletEle.cloneNode(false), {id: c}, 0, EDAll);
         oGd.$B.push(a);
         oSym.addTask(15, function (e) {
-            var d = $(e);
+            var d = $Cfun(e);
             d && SetBlock(d)
         }, [c])
 
@@ -1277,7 +1277,7 @@ const oScaredyShroom = InheritO(oFumeShroom, {
 
         var b = this, a = b.id;
         try {
-            Math.abs(e.ZX - b.MX) < 121 && e.beAttacked ? (b.ArZ.push(e.id), !b.Cry && (b.Cry = 1, $(a).childNodes[1].src = "images/Plants/ScaredyShroom/ScaredyShroomCry.gif", b.CryCheck(a))) : (!b.Cry && !b.Attacking && e.Altitude > 0 && e.Altitude < 3 && b.NormalAttack())
+            Math.abs(e.ZX - b.MX) < 121 && e.beAttacked ? (b.ArZ.push(e.id), !b.Cry && (b.Cry = 1, $Cfun(a).childNodes[1].src = "images/Plants/ScaredyShroom/ScaredyShroomCry.gif", b.CryCheck(a))) : (!b.Cry && !b.Attacking && e.Altitude > 0 && e.Altitude < 3 && b.NormalAttack())
 
         } catch (err) {
             console.log(err)
@@ -1300,7 +1300,7 @@ const oScaredyShroom = InheritO(oFumeShroom, {
         oGd.$B.push(b);
         c.Attacking = 1;
         oSym.addTask(10, function (g, e) {
-            var f = $(g);
+            var f = $Cfun(g);
             f && SetBlock(f);
             oSym.addTask(130, function (h) {
                 var i = $P[h];
@@ -1319,7 +1319,7 @@ const oScaredyShroom = InheritO(oFumeShroom, {
                     (!(e = $Z[f[c]]) || Math.abs(e.ZX - d.MX) > 120) && f.splice(c, 1)
                 }
                 try {
-                    f.length ? d.CryCheck(b) : (d.Cry = 0, $(b).childNodes[1].src = "images/Plants/ScaredyShroom/ScaredyShroom.gif")
+                    f.length ? d.CryCheck(b) : (d.Cry = 0, $Cfun(b).childNodes[1].src = "images/Plants/ScaredyShroom/ScaredyShroom.gif")
 
                 } catch (err) {
                     console.log(err)
@@ -1360,7 +1360,7 @@ const oSunShroom = InheritO(oFumeShroom, {
         }, [d, GetX(c.C) - 40, GetY(c.R)]), oSym.addTask(12000, function (f) {
             var e = $P[f];
             try {
-                e && (e.Sleep = 0, $(f).childNodes[1].src = "images/Plants/SunShroom/SunShroom.gif", e.Status = 1)
+                e && (e.Sleep = 0, $Cfun(f).childNodes[1].src = "images/Plants/SunShroom/SunShroom.gif", e.Status = 1)
 
             } catch (err) {
                 console.log(err)
@@ -1380,7 +1380,7 @@ const oSunShroom = InheritO(oFumeShroom, {
         var b = a.id;
         a.ProduceSun(a, GetX(a.C) - 40, GetY(a.R));
         try {
-            $(b).childNodes[1].src = "images/Plants/SunShroom/SunShroom2.gif";
+            $Cfun(b).childNodes[1].src = "images/Plants/SunShroom/SunShroom2.gif";
 
         } catch (err) {
             console.log(err)
@@ -1389,7 +1389,7 @@ const oSunShroom = InheritO(oFumeShroom, {
         oSym.addTask(12000, function (d) {
             var c = $P[d];
             try {
-                c && ($(d).childNodes[1].src = "images/Plants/SunShroom/SunShroom.gif", c.Status = 1)
+                c && ($Cfun(d).childNodes[1].src = "images/Plants/SunShroom/SunShroom.gif", c.Status = 1)
 
             } catch (err) {
                 console.log(err)
@@ -1427,7 +1427,7 @@ let oDoomShroom = InheritO(oFumeShroom, {
         a.Sleep = 0;
         a.getHurt = function () {
         };
-        $(b).childNodes[1].src = "images/Plants/DoomShroom/BeginBoom.gif";
+        $Cfun(b).childNodes[1].src = "images/Plants/DoomShroom/BeginBoom.gif";
         a.NormalAttack(b)
     },
     NormalAttack: function (a) {
@@ -1435,7 +1435,7 @@ let oDoomShroom = InheritO(oFumeShroom, {
             var d = $P[c],
                 q = c + "_Boom";
             if (d) {
-                var g = $(c),
+                var g = $Cfun(c),
                     l = d.R,
                     // h = l > 3 ? l - 2 : 1,
                     // f = 5,
@@ -1477,7 +1477,7 @@ let oDoomShroom = InheritO(oFumeShroom, {
                     ["-2264px 0", 10, 9],
                     ["-2547px 0", 10, -1]
                 ], 0, function (i, p) {
-                    ClearChild($(i));
+                    ClearChild($Cfun(i));
                     // d.setCrater(c + "_crater", l, b, d.pixelLeft + 3, d.pixelTop + 50)
                 })
             }

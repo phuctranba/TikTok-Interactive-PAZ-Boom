@@ -110,7 +110,7 @@ var CZombies = function (b, a) {
                 }, [c, d.FreeFreezeTime = oSym.Now + 400, NewImg("icetrap_" + Math.random(), "images/Plants/IceShroom/icetrap.gif", d.getShadow(d), d.Ele)])
             },
             ChangeR: function (e) {
-                var h = e.R, g = e.ar || [], k = e.CustomTop, d = this, r = h - 1, m, l = d.id, n = -1, f = $(l),
+                var h = e.R, g = e.ar || [], k = e.CustomTop, d = this, r = h - 1, m, l = d.id, n = -1, f = $Cfun(l),
                     q = f.childNodes[1], j = oGd.$LF, c;
                 !g.length && (d.CanPass(r, j[r]) && (g[++n] = r), d.CanPass(r += 2, j[r]) && (g[++n] = r));
                 g.length ? (m = !d.WalkDirection ? -5 : 5, d.ZX += m, d.AttackedLX += m, d.AttackedRX += m, d.X += m, r = g[Math.floor(Math.random() * g.length)], SetStyle(f, {
@@ -181,7 +181,7 @@ var CZombies = function (b, a) {
             BirthCallBack: function (f) {
                 var e = f.delayT,
                     d = f.id,
-                    c = f.Ele = $(d);
+                    c = f.Ele = $Cfun(d);
                 f.EleShadow = c.firstChild;
                 f.EleBody = c.childNodes[1];
                 e ? oSym.addTask(e, function (h, g) {
@@ -426,7 +426,7 @@ var CZombies = function (b, a) {
         BirthCallBack: function (e) {
             var d = e.delayT,
                 c = e.id,
-                b = e.Ele = $(c),
+                b = e.Ele = $Cfun(c),
                 a = e.EleBody = b.childNodes[1];
             e.EleShadow = b.firstChild;
             oSym.addTask(d, function (g, f) {
@@ -554,7 +554,7 @@ var CZombies = function (b, a) {
             b.ChkActs = b.ChkActs1;
             b.ChangeChkActsTo1(b, a, b.EleBody);
             b.ResetBackupDancer(b);
-            $(a + "_spotlightCon").style.left = "20px", $(a + "_spotlight2Con").style.left = "25px";
+            $Cfun(a + "_spotlightCon").style.left = "20px", $Cfun(a + "_spotlight2Con").style.left = "25px";
             oP.MonPrgs()
         },
         ResetBackupDancer: function (f) {
@@ -588,7 +588,7 @@ var CZombies = function (b, a) {
         BirthCallBack: function (d) {
             var b = d.delayT,
                 l = d.id,
-                a = d.Ele = $(l),
+                a = d.Ele = $Cfun(l),
                 c = 320,
                 i = oGd.$LF,
                 g = d.R,
@@ -1313,7 +1313,7 @@ var CZombies = function (b, a) {
         BirthCallBack: function (g) {
             var e = g.delayT,
                 c = g.id,
-                b = g.Ele = $(c),
+                b = g.Ele = $Cfun(c),
                 d = g.AttackedLX,
                 f, a, h;
             f = g.EleShadow = b.firstChild;
@@ -1343,7 +1343,7 @@ var CZombies = function (b, a) {
                         ["-582px 0", 9, 7],
                         ["-679px 0", 9, -1]
                     ], 0, function (i, j) {
-                        ClearChild($(i))
+                        ClearChild($Cfun(i))
                     })
             }
             e ? oSym.addTask(e, function (j, i) {
@@ -1364,7 +1364,7 @@ var CZombies = function (b, a) {
                 ["-582px 0", 9, 7],
                 ["-679px 0", 9, -1]
             ], 0, function (h, i) {
-                ClearChild($(h))
+                ClearChild($Cfun(h))
             }));
             return 1
         },

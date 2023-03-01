@@ -253,10 +253,10 @@ const oS = {
         $Pn = [];
         $Z = [];
         $P = [];
-        EDAll = $("dAll");
+        EDAll = $Cfun("dAll");
         EDNewAll = EDAll.cloneNode(true);
-        EDNewFlagMeter = $("dFlagMeter").cloneNode(true);
-        ESSunNum = $("sSunNum");
+        EDNewFlagMeter = $Cfun("dFlagMeter").cloneNode(true);
+        ESSunNum = $Cfun("sSunNum");
         this.LoadAccess = null;
         this.InitLawnMower = null;
         this.StartGame = null;
@@ -362,8 +362,8 @@ const oS = {
         this.LoadProgress()
     },
     LoadProgress: function (r, l, a) {
-        SetVisible($("dFlagMeter"));
-        SetHidden($("imgGQJC"));
+        SetVisible($Cfun("dFlagMeter"));
+        SetHidden($Cfun("imgGQJC"));
         var p = oS, j = [], i = p.PicArr, k = p.PName, s = p.ZName, u = 0,
             d = document.createTextNode("Đang tải。。。"),
             t = GetX(11), g = oGd.$LF, b = oGd.$ZF, c = oS.R + 1, e = p.LoadImage, h = p.CheckImg, f = p.InitPn, m,
@@ -431,18 +431,18 @@ const oS = {
             return
         }
         b = 139 - c.AccessNum++ * 140 / c.PicNum - 11;
-        $("imgFlagHead").style.left = b + "px";
+        $Cfun("imgFlagHead").style.left = b + "px";
         a = "Tải:(" + c.AccessNum + "/" + c.PicNum + ")";
         // innerText($("sFlagMeterTitleF"), a);
-        $("dFlagMeterTitleB").firstChild.data = a;
-        $("imgFlagMeterFull").style.clip = "rect(0,auto,21px," + (b + 11) + "px)";
+        $Cfun("dFlagMeterTitleB").firstChild.data = a;
+        $Cfun("imgFlagMeterFull").style.clip = "rect(0,auto,21px," + (b + 11) + "px)";
         if (c.AccessNum == c.PicNum) {
-            SetHidden($("dFlagMeterContent"), $("dFlagMeter"));
-            SetStyle($("dFlagMeter"), {left: "260px", top: "560px"});
+            SetHidden($Cfun("dFlagMeterContent"), $Cfun("dFlagMeter"));
+            SetStyle($Cfun("dFlagMeter"), {left: "260px", top: "560px"});
             // innerText($("sFlagMeterTitleF"), $("dFlagMeterTitleB").firstChild.data = c.LevelName);
-            $("imgFlagHead").style.left = "139px";
-            $("imgFlagMeterFull").style.clip = "rect(0,auto,auto,157px)";
-            (oS.AutoSun = $User.Client.PC && $User.HTTP ? Math.floor(getCookie("JSPVZAutoSun")) : 1) && ($("cAutoSun").checked = true);
+            $Cfun("imgFlagHead").style.left = "139px";
+            $Cfun("imgFlagMeterFull").style.clip = "rect(0,auto,auto,157px)";
+            (oS.AutoSun = $User.Client.PC && $User.HTTP ? Math.floor(getCookie("JSPVZAutoSun")) : 1) && ($Cfun("cAutoSun").checked = true);
             delete c.PicArr;
             delete c.Coord;
             delete c.LF;
@@ -451,7 +451,7 @@ const oS = {
                 NewImg("imgGrowSoil", "images/interface/GrowSoil.png", "display:none;z-index:50", EDAll);
                 NewEle("dTitle", "div", 0, 0, EDAll);
                 innerText(ESSunNum, c.SunNum);
-                SetStyle($("tGround"), {background: "url(" + c.backgroundImage + ") no-repeat", display: "block"});
+                SetStyle($Cfun("tGround"), {background: "url(" + c.backgroundImage + ") no-repeat", display: "block"});
                 // InitPCard();
                 // c.ShowScroll ? oSym.addTask(100, function () {
                 //     var d = EDAll.scrollLeft += 25;
@@ -505,7 +505,7 @@ const oP = {
                     q = Math.max(q - p, 0);
                     SetStyle(r, {top: q + "px", clip: "rect(0,auto," + (i += p) + "px,0)"});
                     q && oSym.addTask(10, arguments.callee, [r, q, i, p])
-                }, [$(m.id).childNodes[1], j = m.height, 0, j * 0.1]);
+                }, [$Cfun(m.id).childNodes[1], j = m.height, 0, j * 0.1]);
                 m.Birth()
             }
         }, f)
@@ -525,7 +525,7 @@ const oP = {
         }, f)
     }, AddZombiesFlag: function (d) {
         var g = oP, c = oS.LargeWaveFlag, e, b = g.FlagHeadStep, a = g.FlagNum;
-        SetVisible($("imgGQJC"), $("dFlagMeterContent"));
+        SetVisible($Cfun("imgGQJC"), $Cfun("dFlagMeterContent"));
         for (e in c) {
             Math.floor(e) < a ? SetStyle(c[e], {
                 display: "block",
@@ -537,12 +537,12 @@ const oP = {
     }, FlagPrgs: function () {
         var f = oP, c = f.FlagZombies, e = f.FlagToSumNum, a = 139 - c * f.FlagHeadStep, d = $SSml(c, e.a1, e.a2),
             b;
-        f.FlagNum > (c = ++f.FlagZombies) ? ($("imgFlagHead").style.left = a + "px", $("imgFlagMeterFull").style.clip = "rect(0,157px,21px," + (a + 11) + "px)", (b = $SEql(c, f.FlagToMonitor)) && oSym.addTask(1690, function (g) {
+        f.FlagNum > (c = ++f.FlagZombies) ? ($Cfun("imgFlagHead").style.left = a + "px", $Cfun("imgFlagMeterFull").style.clip = "rect(0,157px,21px," + (a + 11) + "px)", (b = $SEql(c, f.FlagToMonitor)) && oSym.addTask(1690, function (g) {
             !g[1] && (g[0](), g[1] = 1)
         }, [b]), oSym.addTask(2490, function (g) {
             var h = oP;
             h.ReadyFlag == g++ && (h.ReadyFlag = g, h.FlagPrgs())
-        }, [c])) : ($("imgFlagHead").style.left = "-1px", $("imgFlagMeterFull").style.clip = "rect(0,157px,21px,0)");
+        }, [c])) : ($Cfun("imgFlagHead").style.left = "-1px", $Cfun("imgFlagMeterFull").style.clip = "rect(0,157px,21px,0)");
         f.SelectFlagZombie.call(f, d);
         f.UserDefinedFlagFunc && f.UserDefinedFlagFunc()
     }, MonPrgs: function () {
@@ -580,15 +580,15 @@ const oGd = {
         }
         oSym.addTask(1, arguments.callee, [])
     }, MB1: function (e, j, m, f) {
-        var d = e.id, k = $(d), h = e.Attack, a = e.D, p, q = e.X, c = GetC(q), g = e.R, n = e.Kind, l = e.ChangeC,
+        var d = e.id, k = $Cfun(d), h = e.Attack, a = e.D, p, q = e.X, c = GetC(q), g = e.R, n = e.Kind, l = e.ChangeC,
             b = oZ.getZ(q, g, a);
         n < 1 && f[g + "_" + c] && l != c && ((e.Kind = ++n) && (h = e.Attack = 40), e.ChangeC = c, k.src = "images/Plants/PB" + n + a + ".gif");
         b && b.Altitude == 1 ? (b.getHurt(-1, a, h, n, 0, 0, 0), m.splice(j, 1), (SetStyle(k, {left: e.pixelLeft + 28 + "px"})).src = "images/Plants/PeaBulletHit.gif", oSym.addTask(10, ClearChild, [k])) : (e.X += (p = !a ? 5 : -5)) < oS.W && e.X > 100 ? k.style.left = (e.pixelLeft += p) + "px" : (m.splice(j, 1), ClearChild(k))
     }, MB2: function (d, g, h) {
-        var c = d.id, j = d.X, a = GetC(j), f = d.R, b = oZ.getZ(j, f, 0), e = $(c);
+        var c = d.id, j = d.X, a = GetC(j), f = d.R, b = oZ.getZ(j, f, 0), e = $Cfun(c);
         b && b.Altitude == 1 ? (b.getHurt(-1, 0, 20, 0, 0, 0, 0), h.splice(g, 1), (SetStyle(e, {left: d.pixelLeft + 38 + "px"})).src = "images/Plants/ShroomBulletHit.gif", oSym.addTask(10, ClearChild, [e])) : (d.X += 5) < oS.W ? e.style.left = (d.pixelLeft += 5) + "px" : (h.splice(g, 1), ClearChild(e))
     }, MB3: function (g, d, a) {
-        var h = g.id, b = $(h), f = oZ.getZ(g.X, g.R, 0), e = g.D, c = g.pixelTop;
+        var h = g.id, b = $Cfun(h), f = oZ.getZ(g.X, g.R, 0), e = g.D, c = g.pixelTop;
         if (f && f.Altitude == 1) {
             f.getHurt(-1, 0, 20, 0, 0, 0, 0);
             a.splice(d, 1);
@@ -679,7 +679,7 @@ const oZ = {
                     R: p,
                     ar: [oS.R - 1],
                     CustomTop: 400 - c.height + c.GetDY()
-                })), c.ZX = c.AttackedLX -= a, $(g).style.left = Math.floor(c.X -= a) + "px", b(c))) : (c.AttackedLX += a) > oS.W ? (i.splice(n, 1), c.Die(2), d(c)) : (c.ZX = c.AttackedRX += a, $(g).style.left = Math.ceil(c.X += a) + "px", b(c))) : b(c)) : b(c)
+                })), c.ZX = c.AttackedLX -= a, $Cfun(g).style.left = Math.floor(c.X -= a) + "px", b(c))) : (c.AttackedLX += a) > oS.W ? (i.splice(n, 1), c.Die(2), d(c)) : (c.ZX = c.AttackedRX += a, $Cfun(g).style.left = Math.ceil(c.X += a) + "px", b(c))) : b(c)) : b(c)
             }
             k ? (k = 0, i.sort(function (r, q) {
                 return r.AttackedLX - q.AttackedLX
@@ -824,41 +824,41 @@ const GroundOnmousemove = function (k) {
     switch (oS.Chose) {
         case 1:
             var n = ArCard[m].PName.prototype;
-            SetStyle($("MovePlant"), {left: d - n.width * 0.5 + "px", top: b + 20 - n.height + "px"});
-            n.CanGrow(p[0], g, a) ? SetStyle($("MovePlantAlpha"), {
+            SetStyle($Cfun("MovePlant"), {left: d - n.width * 0.5 + "px", top: b + 20 - n.height + "px"});
+            n.CanGrow(p[0], g, a) ? SetStyle($Cfun("MovePlantAlpha"), {
                 display: "block",
                 left: f + n.GetDX() + "px",
                 top: c - n.height + n.GetDY(g, a, p[0]) + "px"
-            }) : SetNone($("MovePlantAlpha"));
+            }) : SetNone($Cfun("MovePlantAlpha"));
             break;
         case -1:
             var j = p[1], l = j ? j.id : "", q = oS.MPID;
-            q != l && (q && SetAlpha($(q).childNodes[1], 100, 1), (oS.MPID = l) && SetAlpha($(l).childNodes[1], 60, 0.6));
-            SetStyle($("tShovel"), {left: d - 15 + "px", top: b - 16 + "px"})
+            q != l && (q && SetAlpha($Cfun(q).childNodes[1], 100, 1), (oS.MPID = l) && SetAlpha($Cfun(l).childNodes[1], 60, 0.6));
+            SetStyle($Cfun("tShovel"), {left: d - 15 + "px", top: b - 16 + "px"})
     }
 };
 
 
 const ViewProducePlant = function (b) {
     var a = b.prototype;
-    $("pHandBookPlant").src = a.PicArr[a.NormalGif];
-    $("tdProducePlant").innerHTML = a.Produce;
-    innerText($("tdHandBookPlantName"), a.CName);
-    innerText($("spSunNum"), a.SunNum);
-    innerText($("spCoolTime"), a.coolTime + "秒")
+    $Cfun("pHandBookPlant").src = a.PicArr[a.NormalGif];
+    $Cfun("tdProducePlant").innerHTML = a.Produce;
+    innerText($Cfun("tdHandBookPlantName"), a.CName);
+    innerText($Cfun("spSunNum"), a.SunNum);
+    innerText($Cfun("spCoolTime"), a.coolTime + "秒")
 };
 
 
 const ViewProduceZombie = function (b) {
     var a = b.prototype;
-    $("pHandBookZombie").src = a.PicArr[a.NormalGif];
-    $("tdProduceZombie").innerHTML = a.Produce;
-    innerText($("tdHandBookZombieName"), a.CName)
+    $Cfun("pHandBookZombie").src = a.PicArr[a.NormalGif];
+    $Cfun("tdProduceZombie").innerHTML = a.Produce;
+    innerText($Cfun("tdHandBookZombieName"), a.CName)
 };
 
 
 const DisplayZombie = function () {
-    var c = oP.ArZ.slice(0), b = l2 = c.length, f, g = $("dZombie"), e = [], d = [], a;
+    var c = oP.ArZ.slice(0), b = l2 = c.length, f, g = $Cfun("dZombie"), e = [], d = [], a;
     while (b--) {
         e.push(Math.floor(150 + Math.random() * 444))
     }
@@ -890,24 +890,24 @@ const InitPCard = function () {
         f = e[b];
         c = f.prototype;
         ArPCard[EName = c.EName] = {Select: 0, PName: f};
-        d += '<div class="span1" id="Card' + EName + '" onmouseout="SetNone($(\'dTitle\'))" onmousemove="ViewCardTitle(\'' + EName + "',event)\" onclick=\"SelectCard('" + EName + '\')"><img src="' + c.PicArr[c.CardGif + 1] + '"><img src="' + c.PicArr[c.CardGif] + '"><span class="span2">' + c.SunNum + "</span></div>";
+        d += '<div class="span1" id="Card' + EName + '" onmouseout="SetNone($Cfun(\'dTitle\'))" onmousemove="ViewCardTitle(\'' + EName + "',event)\" onclick=\"SelectCard('" + EName + '\')"><img src="' + c.PicArr[c.CardGif + 1] + '"><img src="' + c.PicArr[c.CardGif] + '"><span class="span2">' + c.SunNum + "</span></div>";
         b++ % 6 == 5 && (d += "<br>")
     }
-    $("dPCard").innerHTML = d
+    $Cfun("dPCard").innerHTML = d
 };
 
 
 const ViewCardTitle = function (b, c) {
     c = c || window.event;
-    var f = $("dTitle"), a = ArPCard[b].PName.prototype;
+    var f = $Cfun("dTitle"), a = ArPCard[b].PName.prototype;
     f.innerHTML = a.CName + "<br>冷却时间:" + a.coolTime + "秒<br>" + a.Tooltip;
     SetStyle(f, {left: c.clientX + EDAll.scrollLeft - 3 + "px", top: c.clientY + 18 + "px", display: "block"})
 };
 
 
 const SelectCard = function (e) {
-    var i = $("Card" + e).childNodes, g = i[1], c = i[0], b = ArPCard[e], j = b.PName.prototype, h, a, k,
-        f = $("btnOK");
+    var i = $Cfun("Card" + e).childNodes, g = i[1], c = i[0], b = ArPCard[e], j = b.PName.prototype, h, a, k,
+        f = $Cfun("btnOK");
     if (!b.Select) {
         if (!(ArPCard.SelNum |= 0)) {
             f.disabled = "";
@@ -923,11 +923,11 @@ const SelectCard = function (e) {
             onclick: function () {
                 SelectCard(e)
             }
-        }, $("dCardList")), NewImg(0, c.src, 0, h), NewImg(0, g.src, 0, h), innerText(NewEle("sSunNum" + e, "span", 0, 0, h), j.SunNum), SetNone(g))
+        }, $Cfun("dCardList")), NewImg(0, c.src, 0, h), NewImg(0, g.src, 0, h), innerText(NewEle("sSunNum" + e, "span", 0, 0, h), j.SunNum), SetNone(g))
     } else {
         b.Select = 0;
         !--ArPCard.SelNum && (f.disabled = "disabled", f.style.color = "#888");
-        (h = $("dCard" + e)).onclick = null;
+        (h = $Cfun("dCard" + e)).onclick = null;
         ClearChild(h.firstChild, h.childNodes[1], h.lastChild, h);
         SetBlock(g)
     }
@@ -935,7 +935,7 @@ const SelectCard = function (e) {
 
 
 const ResetSelectCard = function () {
-    var b, a = $("btnOK");
+    var b, a = $Cfun("btnOK");
     for (b in ArPCard) {
         ArPCard[b].Select && SelectCard(b)
     }
@@ -945,13 +945,13 @@ const ResetSelectCard = function () {
 
 
 const LetsGO = function () {
-    var b = $("dZombie"), f = $("dCardList"), h = 0, l = f.childNodes.length, g, j, m, e, k, a, c = $("dAll");
+    var b = $Cfun("dZombie"), f = $Cfun("dCardList"), h = 0, l = f.childNodes.length, g, j, m, e, k, a, c = $Cfun("dAll");
     while (b.hasChildNodes()) {
         b.removeChild(k = b.lastChild);
         k = null
     }
-    SetNone(b, $("dSelectCard"));
-    $("tGround").style.left = "-115px";
+    SetNone(b, $Cfun("dSelectCard"));
+    $Cfun("tGround").style.left = "-115px";
     EDAll.scrollLeft = 0;
     // SetStyle($("dTop"), {left: "105px", top: 0});
     f.style.left = 0;
@@ -963,11 +963,11 @@ const LetsGO = function () {
                 ChosePlant(i, d)
             };
             k.onmouseover = function () {
-                SetBlock($("dTitle"));
+                SetBlock($Cfun("dTitle"));
                 ViewPlantTitle(oS.MCID = d)
             };
             k.onmouseout = function () {
-                SetNone($("dTitle"))
+                SetNone($Cfun("dTitle"))
             };
             (a = k.lastChild).id = "sSunNum" + d;
             innerText(a, m.SunNum);
@@ -988,9 +988,9 @@ const LetsGO = function () {
     !oS.BrainsNum && CustomSpecial(oBrains, oS.R - 1, -2);
     oGd.MoveBullet();
     (oS.StartGame || function () {
-        ClearChild($("oEmbed"));
+        ClearChild($Cfun("oEmbed"));
         NewEle("oEmbed", "embed", "width:0;height:0", {src: "music/" + oS.StartGameMusic}, EDAll);
-        SetVisible($("tdShovel"), $("dFlagMeter"));
+        SetVisible($Cfun("tdShovel"), $Cfun("dFlagMeter"));
         // SetBlock($("dTop"));
         oS.InitLawnMower();
         PrepareGrowPlants(function () {
@@ -999,7 +999,7 @@ const LetsGO = function () {
             oS.DKind && AutoProduceSun(25);
             oSym.addTask(1500, function () {
                 oP.AddZombiesFlag();
-                SetVisible($("dFlagMeterContent"))
+                SetVisible($Cfun("dFlagMeterContent"))
             }, [])
         })
     })()
@@ -1007,7 +1007,7 @@ const LetsGO = function () {
 
 
 const ViewPlantTitle = function (b) {
-    var f = $("dTitle"), e = ArCard[b], c = e.PName.prototype, a = c.CName;
+    var f = $Cfun("dTitle"), e = ArCard[b], c = e.PName.prototype, a = c.CName;
     !oS.CardKind && (a += "<br>Thời gian chờ:" + c.coolTime + "giây<br>" + c.Tooltip, !e.CDReady && (a += '<br><span style="color:#F00">Đang được nạp...</span>'));
     !e.SunReady && (a += '<br><span style="color:#F00">Không đủ ánh sáng!</span>');
     f.innerHTML = a;
@@ -1024,7 +1024,7 @@ const BeginCool = function () {
             case 0:
             case 7.5:
                 d.CDReady = 1;
-                e <= oS.SunNum && (d.SunReady = 1, SetBlock($(d.DID).childNodes[1]));
+                e <= oS.SunNum && (d.SunReady = 1, SetBlock($Cfun(d.DID).childNodes[1]));
                 break;
             case 30:
                 DoCoolTimer(b, 20);
@@ -1040,7 +1040,7 @@ const MonitorCard = function (c) {
     var a = ArCard.length, b;
     if (oS.Chose < 1) {
         while (a--) {
-            (b = (c = ArCard[a]).PName.prototype).SunNum > oS.SunNum ? (c.SunReady && (c.SunReady = 0), SetNone($(c.DID).childNodes[1])) : (!c.SunReady && (c.SunReady = 1), c.CDReady && (SetBlock($(c.DID).childNodes[1])))
+            (b = (c = ArCard[a]).PName.prototype).SunNum > oS.SunNum ? (c.SunReady && (c.SunReady = 0), SetNone($Cfun(c.DID).childNodes[1])) : (!c.SunReady && (c.SunReady = 1), c.CDReady && (SetBlock($Cfun(c.DID).childNodes[1])))
         }
     } else {
         while (a--) {
@@ -1052,7 +1052,7 @@ const MonitorCard = function (c) {
 
 
 const DoCoolTimer = function (c, b) {
-    var a = $(ArCard[c].DID);
+    var a = $Cfun(ArCard[c].DID);
     (function (d, g, f, e) {
         d > 0 ? (innerText(f, d), innerText(e, d), oSym.addTask(50, arguments.callee, [(d - 0.5).toFixed(1), g, f, e])) : (ClearChild(f, e), ArCard[g].CDReady = 1, MonitorCard())
     })(b, c, NewEle("dCD1" + c, "span", "position:absolute;left:22px;top:22px;font-size:18px;font-weight:500;font-family:Verdana;color:#000", "", a), NewEle("dCD2" + c, "span", "position:absolute;left:20px;top:20px;font-size:18px;font-weight:500;font-family:Verdana;color:#FF0", "", a))
@@ -1079,14 +1079,14 @@ const ChosePlant = function (a, f) {
         zIndex: 30
     }, EDAll) : (NewImg("MovePlant", d.PicArr[d.NormalGif], "left:" + (g - d.width * 0.5) + "px;top:" + (e + 20 - d.height) + "px;z-index:254", EDAll), NewImg("MovePlantAlpha", d.PicArr[d.NormalGif], "display:none;filter:alpha(opacity=40);opacity:0.4;z-index:30", EDAll));
     while (c--) {
-        SetNone($(ArCard[c].DID).childNodes[1])
+        SetNone($Cfun(ArCard[c].DID).childNodes[1])
     }
-    SetNone($("dTitle"))
+    SetNone($Cfun("dTitle"))
 };
 
 
 const CancelPlant = function () {
-    ClearChild($("MovePlant"), $("MovePlantAlpha"));
+    ClearChild($Cfun("MovePlant"), $Cfun("MovePlantAlpha"));
     oS.Chose = 0;
     MonitorCard()
 };
@@ -1101,15 +1101,15 @@ const ShovelPlant = function (a) {
 
 const CancelShovel = function (a) {
     var b = oS.MPID;
-    ClearChild($("tShovel"));
+    ClearChild($Cfun("tShovel"));
     oS.Chose = 0;
-    SetBlock($("imgShovel"));
-    b && SetAlpha($(b).childNodes[1], 100, 1)
+    SetBlock($Cfun("imgShovel"));
+    b && SetAlpha($Cfun(b).childNodes[1], 100, 1)
 };
 
 
 const ChoseShovel = function (a) {
-    WhichMouseButton(a) < 2 && (SetNone($("imgShovel")), NewImg("tShovel", "images/interface/Shovel.png", "left:" + (a.clientX - 10) + "px;top:" + (a.clientY + document.body.scrollTop - 17) + "px;z-index:1", EDAll), oS.Chose = -1, StopBubble(a))
+    WhichMouseButton(a) < 2 && (SetNone($Cfun("imgShovel")), NewImg("tShovel", "images/interface/Shovel.png", "left:" + (a.clientX - 10) + "px;top:" + (a.clientY + document.body.scrollTop - 17) + "px;z-index:1", EDAll), oS.Chose = -1, StopBubble(a))
 };
 
 
@@ -1123,12 +1123,12 @@ const GrowPlant = function (k, d, c, e, b) {
     j.CanGrow(k, e, b) && (!oS.CardKind ? (new g).Birth(d, c, e, b, k) : asyncInnerHTML((a = new g).CustomBirth(e, b, 0, "auto"), function (m, l) {
         EDAll.appendChild(m);
         l.Birth()
-    }, a), innerText(ESSunNum, oS.SunNum -= j.SunNum), SetNone($(f.DID).childNodes[1]), h && (f.CDReady = 0, DoCoolTimer(i, j.coolTime)), SetStyle($("imgGrowSoil"), {
+    }, a), innerText(ESSunNum, oS.SunNum -= j.SunNum), SetNone($Cfun(f.DID).childNodes[1]), h && (f.CDReady = 0, DoCoolTimer(i, j.coolTime)), SetStyle($Cfun("imgGrowSoil"), {
         left: d - 30 + "px",
         top: c - 40 + "px",
         zIndex: 3 * e,
         display: "block"
-    }), oSym.addTask(20, SetNone, [$("imgGrowSoil")]));
+    }), oSym.addTask(20, SetNone, [$Cfun("imgGrowSoil")]));
     CancelPlant()
 };
 
@@ -1168,13 +1168,13 @@ const AppearSun = function (h, f, e, a) {
 
 const MoveDropSun = function (c, b) {
     var a = ArSun[c];
-    a && a.C && (a.top < b - 53 ? ($(c).style.top = (a.top += 3) + "px", oSym.addTask(5, MoveDropSun, [c, b])) : oSym.addTask(800, DisappearSun, [c]))
+    a && a.C && (a.top < b - 53 ? ($Cfun(c).style.top = (a.top += 3) + "px", oSym.addTask(5, MoveDropSun, [c, b])) : oSym.addTask(800, DisappearSun, [c]))
 };
 
 
 const DisappearSun = function (b) {
     var a = ArSun[b];
-    a && a.C && (delete ArSun[b], ClearChild($(b)))
+    a && a.C && (delete ArSun[b], ClearChild($Cfun(b)))
 };
 
 
@@ -1188,13 +1188,13 @@ const MoveClickSun = function (b) {
     var a = 15, c = ArSun[b], e = 85, i = -20, d = c.left, h = c.top, g = Math.round((d - e) / a),
         f = Math.round((h - i) / a);
     (function (k, l, n, s, m, r, j, q, p) {
-        (m -= q) > n ? (SetStyle($(k), {
+        (m -= q) > n ? (SetStyle($Cfun(k), {
             left: m + "px",
             top: (r -= p) + "px"
-        }), oSym.addTask(j, arguments.callee, [k, l, n, s, m, r, j += 0.3, q, p])) : (SetStyle($(k), {
+        }), oSym.addTask(j, arguments.callee, [k, l, n, s, m, r, j += 0.3, q, p])) : (SetStyle($Cfun(k), {
             left: n + "px",
             top: s + "px"
-        }), delete ArSun[k], oSym.addTask(20, ClearChild, [$(k)]))
+        }), delete ArSun[k], oSym.addTask(20, ClearChild, [$Cfun(k)]))
     })(b, c, e, i, d, h, 1, g, f)
 };
 
@@ -1210,14 +1210,14 @@ const AutoClickSun = function () {
 const ShowLargeWave = function (a) {
     NewImg("LargeWave", "images/LargeWave.gif", "left:71px;top:249px;width:858px;height:102px;z-index:50", EDAll);
     oSym.addTask(4, function (b, c, d) {
-        SetStyle($("LargeWave"), {
+        SetStyle($Cfun("LargeWave"), {
             width: (b -= 57.2) + "px",
             height: (c -= 6.8) + "px",
             left: 500 - b * 0.5 + "px",
             top: 300 - c * 0.5 + "px"
         });
         b > 286 ? oSym.addTask(4, arguments.callee, [b, c, d]) : (oSym.addTask(460, function () {
-            ClearChild($("LargeWave"))
+            ClearChild($Cfun("LargeWave"))
         }, []), d && d())
     }, [858, 102, a])
 };
@@ -1227,14 +1227,14 @@ const ShowFinalWave = function () {
     var a = function (b) {
         NewImg("FinalWave", "images/FinalWave.gif", "left:122px;top:194px;width:756px;height:213px;z-index:50", EDAll);
         oSym.addTask(4, function (c, e, d) {
-            SetStyle($("FinalWave"), {
+            SetStyle($Cfun("FinalWave"), {
                 width: (c -= 50.4) + "px",
                 height: (e -= 14.2) + "px",
                 left: 500 - c * 0.5 + "px",
                 top: 300 - e * 0.5 + "px"
             });
             c > 252 ? oSym.addTask(4, arguments.callee, [c, e, d]) : oSym.addTask(d, function () {
-                ClearChild($("FinalWave"))
+                ClearChild($Cfun("FinalWave"))
             }, [])
         }, [756, 213, b])
     };
@@ -1277,9 +1277,9 @@ const ZombieWin = function (e, name, score, userId, avatar) {
                 break;
         }
 
-        TextToSpeech(textCongrats)
-        EditImg($("topAvatar"), 0, avatar);
-        innerText($("topName"), name.length > 11 ? name.slice(0, 11) + "..." : name);
+        TextToSpeech(textCongrats, true)
+        EditImg($Cfun("topAvatar"), 0, avatar);
+        innerText($Cfun("topName"), name.length > 11 ? name.slice(0, 11) + "..." : name);
     }
 };
 
@@ -1356,13 +1356,13 @@ const BirthPlant = function () {
     if (plantPrototype.CanGrow(currentPlant, arrIndexCell[index][0], arrIndexCell[index][1])) {
         (new oS.PName[indexPlant]).Birth(arrLocationCell[index][1], arrLocationCell[index][0], arrIndexCell[index][0], arrIndexCell[index][1], currentPlant);
 
-        SetStyle($("imgGrowSoil"), {
+        SetStyle($Cfun("imgGrowSoil"), {
             left: arrLocationCell[index][1] - 30 + "px",
             top: arrLocationCell[index][0] - 40 + "px",
             zIndex: 3 * arrIndexCell[index][0],
             display: "block"
         });
-        oSym.addTask(20, SetNone, [$("imgGrowSoil")]);
+        oSym.addTask(20, SetNone, [$Cfun("imgGrowSoil")]);
 
         // arrLocation.splice(index, 1);
         // arrIndex.splice(index, 1);
@@ -1378,13 +1378,13 @@ const BirthPlantByCellAndType = function (typeOfPlant, cellIndex) {
     if (plantPrototype.CanGrow(currentPlant, arrIndexCell[cellIndex][0], arrIndexCell[cellIndex][1])) {
         (new typeOfPlant).Birth(arrLocationCell[cellIndex][1], arrLocationCell[cellIndex][0], arrIndexCell[cellIndex][0], arrIndexCell[cellIndex][1], currentPlant);
 
-        SetStyle($("imgGrowSoil"), {
+        SetStyle($Cfun("imgGrowSoil"), {
             left: arrLocationCell[cellIndex][1] - 30 + "px",
             top: arrLocationCell[cellIndex][0] - 40 + "px",
             zIndex: 3 * arrIndexCell[cellIndex][0],
             display: "block"
         });
-        oSym.addTask(20, SetNone, [$("imgGrowSoil")]);
+        oSym.addTask(20, SetNone, [$Cfun("imgGrowSoil")]);
     }
 };
 
@@ -1392,7 +1392,7 @@ const BirthPlantByCellAndType = function (typeOfPlant, cellIndex) {
 const PrepareGrowPlants = function (a) {
     NewImg("PrepareGrow", "images/PrepareGrowPlants.gif" + $Random + Math.random(), "transform: rotateY(180deg); z-index:50;left:" + (oS.W * 0.5 - 77) + "px;top:" + (oS.H * 0.5 - 54) + "px", EDAll);
     oSym.addTask(250, function (b) {
-        ClearChild($("PrepareGrow"));
+        ClearChild($Cfun("PrepareGrow"));
         b()
     }, [a])
 };
@@ -1422,18 +1422,18 @@ const GetNewCard = function (a, b, c) {
         ++d < 100 ? (SetAlpha(e, d, d * 0.01), oSym.addTask(1, arguments.callee, [d, e])) : function () {
             // SetHidden(EDAll, $("dTop"));
             var f = b.prototype;
-            $("iNewPlantCard").src = f.PicArr[f.NormalGif];
-            $("iNewPlantCard").style.marginTop = 180 - f.height + "px";
-            innerText($("dNewPlantName"), f.CName);
-            $("dNewPlantTooltip").innerHTML = f.Tooltip;
-            $("btnNextLevel").onclick = function () {
+            $Cfun("iNewPlantCard").src = f.PicArr[f.NormalGif];
+            $Cfun("iNewPlantCard").style.marginTop = 180 - f.height + "px";
+            innerText($Cfun("dNewPlantName"), f.CName);
+            $Cfun("dNewPlantTooltip").innerHTML = f.Tooltip;
+            $Cfun("btnNextLevel").onclick = function () {
                 c == 10 && (c = 0, alert("Bạn đã không hoàn thành mục tiêu！"));
                 SelectModal(c)
             };
-            SetStyle($("dNewPlant"), {display: "block", zIndex: 255});
+            SetStyle($Cfun("dNewPlant"), {display: "block", zIndex: 255});
             oSym.Stop()
         }()
-    }, [0, $("DivA")])
+    }, [0, $Cfun("DivA")])
 };
 
 
@@ -1482,11 +1482,11 @@ const SelectModal = function (g) {
     HiddenLevel();
     HiddenMiniGame();
     HiddenRiddleGame();
-    SetHidden($("dCardList"));
-    SetNone($("dSurface"), $("iSurfaceBackground"), $("tGround"), $("dSelectCard"), $("dHandBook"), $("dNewPlant"), $("dProcess"));
-    ClearChild($("dFlagMeterTitleB").firstChild);
-    EDAll = $("dBody").replaceChild(EDNewAll, EDAll);
-    $("dBody").replaceChild(EDNewFlagMeter, $("dFlagMeter"));
+    SetHidden($Cfun("dCardList"));
+    SetNone($Cfun("dSurface"), $Cfun("iSurfaceBackground"), $Cfun("tGround"), $Cfun("dSelectCard"), $Cfun("dHandBook"), $Cfun("dNewPlant"), $Cfun("dProcess"));
+    ClearChild($Cfun("dFlagMeterTitleB").firstChild);
+    EDAll = $Cfun("dBody").replaceChild(EDNewAll, EDAll);
+    $Cfun("dBody").replaceChild(EDNewFlagMeter, $Cfun("dFlagMeter"));
     LoadLvl(g)
 };
 
@@ -1495,7 +1495,7 @@ const LoadLvl = function (b, a) {
     (b = b || 0) && oSym.Now == a && (b = 0);
     oSym.Timer && oSym.Stop();
     oSym.Init(function (d) {
-        var c = $("JSPVZ");
+        var c = $Cfun("JSPVZ");
         c && ClearChild(c);
         NewEle("JSPVZ", "script", "", {
             src: "level/" + (oS.Lvl = d) + ".js?v=" + Math.random(),
@@ -1528,12 +1528,12 @@ const AppearTombstones = function (j, d, h) {
 
 const PauseGame = function (b) {
     var a = oSym;
-    a.Timer ? (a.Stop(), innerText(b, "Lưu Game")) : (a.Start(), innerText(b, "Tạm Dừng"), $("dMenu1").onclick = ClickMenu)
+    a.Timer ? (a.Stop(), innerText(b, "Lưu Game")) : (a.Start(), innerText(b, "Tạm Dừng"), $Cfun("dMenu1").onclick = ClickMenu)
 };
 
 
 const ClickMenu = function () {
-    oSym.Timer && (oSym.Stop(), SetBlock($("dSurface")), ShowOptions())
+    oSym.Timer && (oSym.Stop(), SetBlock($Cfun("dSurface")), ShowOptions())
 };
 
 
@@ -1550,69 +1550,69 @@ const OptionsMenuUP = function (b, a) {
 
 
 const ShowLevel = function () {
-    SetBlock($("dSurfaceBack"), $("dOptionsMenuback"), $("dSelectLevel"), $("dTitleSmallContainer"))
+    SetBlock($Cfun("dSurfaceBack"), $Cfun("dOptionsMenuback"), $Cfun("dSelectLevel"), $Cfun("dTitleSmallContainer"))
 };
 
 
 const HiddenLevel = function () {
-    SetNone($("dSurfaceBack"), $("dOptionsMenuback"), $("dSelectLevel"), $("dTitleSmallContainer"))
+    SetNone($Cfun("dSurfaceBack"), $Cfun("dOptionsMenuback"), $Cfun("dSelectLevel"), $Cfun("dTitleSmallContainer"))
 };
 
 
 const ShowMiniGame = function () {
-    SetBlock($("dSurfaceBack"), $("dOptionsMenuback"), $("dSelectLevel"), $("dMiniSmallContainer"))
+    SetBlock($Cfun("dSurfaceBack"), $Cfun("dOptionsMenuback"), $Cfun("dSelectLevel"), $Cfun("dMiniSmallContainer"))
 };
 
 
 const HiddenMiniGame = function () {
-    SetNone($("dSurfaceBack"), $("dOptionsMenuback"), $("dSelectLevel"), $("dMiniSmallContainer"))
+    SetNone($Cfun("dSurfaceBack"), $Cfun("dOptionsMenuback"), $Cfun("dSelectLevel"), $Cfun("dMiniSmallContainer"))
 };
 
 
 const ShowRiddleGame = function () {
-    SetBlock($("dSurfaceBack"), $("dOptionsMenuback"), $("dSelectLevel"), $("dRiddleSmallContainer"))
+    SetBlock($Cfun("dSurfaceBack"), $Cfun("dOptionsMenuback"), $Cfun("dSelectLevel"), $Cfun("dRiddleSmallContainer"))
 };
 
 
 const HiddenRiddleGame = function () {
-    SetNone($("dSurfaceBack"), $("dOptionsMenuback"), $("dSelectLevel"), $("dRiddleSmallContainer"))
+    SetNone($Cfun("dSurfaceBack"), $Cfun("dOptionsMenuback"), $Cfun("dSelectLevel"), $Cfun("dRiddleSmallContainer"))
 };
 
 
 const ShowOptions = function () {
-    SetBlock($("dSurfaceBack"), $("dOptionsMenuback"), $("dOptionsMenu"))
+    SetBlock($Cfun("dSurfaceBack"), $Cfun("dOptionsMenuback"), $Cfun("dOptionsMenu"))
 };
 
 
 const HiddenOptions = function () {
-    SetNone($("dSurfaceBack"), $("dOptionsMenuback"), $("dOptionsMenu"));
-    oS.Lvl && (SetNone($("dSurface")), PauseGame($("dMenu0")))
+    SetNone($Cfun("dSurfaceBack"), $Cfun("dOptionsMenuback"), $Cfun("dOptionsMenu"));
+    oS.Lvl && (SetNone($Cfun("dSurface")), PauseGame($Cfun("dMenu0")))
 };
 
 
 const ShowHelp = function () {
-    SetBlock($("dSurfaceBack"), $("dHelp"))
+    SetBlock($Cfun("dSurfaceBack"), $Cfun("dHelp"))
 };
 
 
 const HiddenHelp = function () {
-    SetNone($("dSurfaceBack"), $("dHelp"))
+    SetNone($Cfun("dSurfaceBack"), $Cfun("dHelp"))
 };
 
 
 const LoadProProcess = function () {
-    var a = $("JSProcess"), b = $("dProcess2");
+    var a = $Cfun("JSProcess"), b = $Cfun("dProcess2");
     a ? ($User.Browser.IE ? a.onreadystatechange = function () {
         a.readyState == "loaded" && ClearChild(a)
     } : a.onload = function () {
         ClearChild(a)
     }, a.onerror = function () {
         ClearChild(this)
-    }, !$("dText1") && b.insertBefore(NewEle("dText1", "div", 0, {innerHTML: ''}, 0), b.firstChild), a.src = "http://" + $User.AuthorWebsite + "/js/Process.js") : $("sTime").innerHTML = oS.Version
+    }, !$Cfun("dText1") && b.insertBefore(NewEle("dText1", "div", 0, {innerHTML: ''}, 0), b.firstChild), a.src = "http://" + $User.AuthorWebsite + "/js/Process.js") : $Cfun("sTime").innerHTML = oS.Version
 };
 
 
-const $ = function (elementId) {
+const $Cfun = function (elementId) {
     return document.getElementById(elementId);
 };
 
@@ -1849,7 +1849,7 @@ const $SGrt = function (d, c, a) {
 
 
 const ImgSpriter = function (h, c, e, f, g) {
-    var b = e[f], d = b[2], a = $(h);
+    var b = e[f], d = b[2], a = $Cfun(h);
     a && (a.style.backgroundPosition = b[0], oSym.addTask(b[1] * 0.1, function (j) {
         j > -1 ? ImgSpriter(h, c, e, j, g) : g(h, c)
     }, [d]))
@@ -1890,7 +1890,7 @@ const TextToSpeech = async function (text, isTada) {
         .then(async (response) => {
             if(isTada){
                 var sndTada = new Audio("music/tada.mp3");
-                sndTada.volume = 0.7;
+                sndTada.volume = 0.6;
                 sndTada.play()
                     .then(async () => {
                         await new Promise(resolve => setTimeout(resolve, 1000));

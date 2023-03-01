@@ -37,7 +37,7 @@
         NewEle("DivTeach", "div", 0, 0, EDAll);
         oP.Monitor({
             ar: [0], f: function (d) {
-                var b = oS.Chose, a = arguments.callee, c = $("DivTeach");
+                var b = oS.Chose, a = arguments.callee, c = $Cfun("DivTeach");
                 switch (d) {
                     case 0:
                         innerText(c, "Hàng xóm của bạn Dave: zombie muốn tôi giúp họ thực hành nhà xâm lược (Nhấn vào đây để tiếp tục)");
@@ -71,14 +71,14 @@
                             SetNone(c)
                         }, []);
                         (function () {
-                            SetVisible($("dFlagMeter"), $("dFlagMeterContent"));
-                            ClearChild($("oEmbed"));
+                            SetVisible($Cfun("dFlagMeter"), $Cfun("dFlagMeterContent"));
+                            ClearChild($Cfun("oEmbed"));
                             NewEle("oEmbed", "embed", "width:0;height:0", {src: "music/Watery Graves.mp3"}, EDAll)
                         })()
                 }
             }
         });
-        SetVisible($("dFlagMeter"));
+        SetVisible($Cfun("dFlagMeter"));
         oS.RiddleAutoGrow()
     }
 });
